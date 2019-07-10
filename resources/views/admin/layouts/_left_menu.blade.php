@@ -803,16 +803,20 @@
                 <li {!! (Request::is('admin/form_examples') ? 'class="active"' : '') !!}>
                     <a href="{{ URL::to('admin/form_examples') }}">
                         <i class="fa fa-angle-double-right"></i>
-                        Form Examples
+                       Sahkan Permohonan
                     </a>
                 </li>
                 <li {!! (Request::is('admin/editor') ? 'class="active"' : '') !!}>
                     <a href="{{ URL::to('admin/editor') }}">
                         <i class="fa fa-angle-double-right"></i>
-                        Form Editors
+                        Arkib Permohonan
                     </a>
                 </li>
-
+                <li {!! (Request::is('admin/editor') ? 'class="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/editor') }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        Sejarah Permohonan                    </a>
+                </li>
             </ul>
         </li>
         <li {!! (Request::is('admin/form_examples') || Request::is('admin/editor') || Request::is('admin/editor2')
@@ -829,13 +833,13 @@
                 <li {!! (Request::is('admin/form_examples') ? 'class="active"' : '') !!}>
                     <a href="{{ URL::to('admin/form_examples') }}">
                         <i class="fa fa-angle-double-right"></i>
-                        Form Examples
+                        Daftar Stok Masuk
                     </a>
                 </li>
                 <li {!! (Request::is('admin/editor') ? 'class="active"' : '') !!}>
                     <a href="{{ URL::to('admin/editor') }}">
                         <i class="fa fa-angle-double-right"></i>
-                        Form Editors
+                        Lihat Stok
                     </a>
                 </li>
 
@@ -855,13 +859,13 @@
                 <li {!! (Request::is('admin/form_examples') ? 'class="active"' : '') !!}>
                     <a href="{{ URL::to('admin/form_examples') }}">
                         <i class="fa fa-angle-double-right"></i>
-                        Form Examples
+                        Daftar Aset Baru
                     </a>
                 </li>
                 <li {!! (Request::is('admin/editor') ? 'class="active"' : '') !!}>
                     <a href="{{ URL::to('admin/editor') }}">
                         <i class="fa fa-angle-double-right"></i>
-                        Form Editors
+                       Kemaskini Aset
                     </a>
                 </li>
 
@@ -881,13 +885,13 @@
                 <li {!! (Request::is('admin/form_examples') ? 'class="active"' : '') !!}>
                     <a href="{{ URL::to('admin/form_examples') }}">
                         <i class="fa fa-angle-double-right"></i>
-                        Form Examples
+                        Daftar Kakitangan Baru
                     </a>
                 </li>
                 <li {!! (Request::is('admin/editor') ? 'class="active"' : '') !!}>
                     <a href="{{ URL::to('admin/editor') }}">
                         <i class="fa fa-angle-double-right"></i>
-                        Form Editors
+                        Kemaskini Kakitangan
                     </a>
                 </li>
 
@@ -907,13 +911,13 @@
                 <li {!! (Request::is('admin/form_examples') ? 'class="active"' : '') !!}>
                     <a href="{{ URL::to('admin/form_examples') }}">
                         <i class="fa fa-angle-double-right"></i>
-                        Form Examples
+                      Statistik Permohonan
                     </a>
                 </li>
                 <li {!! (Request::is('admin/editor') ? 'class="active"' : '') !!}>
                     <a href="{{ URL::to('admin/editor') }}">
                         <i class="fa fa-angle-double-right"></i>
-                        Form Editors
+                        Laporan Stok Semasa
                     </a>
                 </li>
 
