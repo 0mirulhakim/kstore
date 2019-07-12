@@ -13,6 +13,8 @@ include_once 'web_builder.php';
 
 Route::pattern('slug', '[a-z0-9- _]+');
 
+Route::get('/guest', 'guestController@showHome')->name('guest');
+
 Route::group(['prefix' => 'admin', 'namespace'=>'Admin'], function () {
 
     # Error pages should be shown without requiring login
