@@ -13,7 +13,7 @@
     <![endif]-->
     <title>
         @section('title')
-            | Welcome to Josh Frontend
+            | Selamat Datang ke e-Store PDTK
         @show
     </title>
     <!--global css starts-->
@@ -27,7 +27,7 @@
             color: #01bc8c;
         }
     </style>
-    <!--end of global css-
+    <!--end of global css -->
     <!--page level css-->
 @yield('header_styles')
 <!--end of page level css-->
@@ -77,15 +77,15 @@
                                                  data-hc="#fff"></i></a>
                             <label class="d-none d-md-inline-block d-lg-inline-block d-xl-inline-block"><a
                                         href="mailto:"
-                                        class="text-white">info@joshadmin.com</a></label>
+                                        class="text-white">klang@selangor.gov.my</a></label>
                         </li>
                         <li>
                             <a href="tel:"><i class="livicon" data-name="phone" data-size="18" data-loop="true"
                                               data-c="#fff"
                                               data-hc="#fff"></i></a>
                             <label class="d-none d-md-inline-block d-lg-inline-block d-xl-inline-block"><a href="tel:"
-                                                                                                           class="text-white">(703)
-                                    717-4200</a></label>
+                                                                                                           class="text-white">(03)
+                                    33711963</a></label>
                         </li>
                     </ul>
                 </div>
@@ -104,98 +104,13 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto  margin_right">
-                    <li  class="nav-item {!! (Request::is('/') ? 'active' : '') !!}">
-                        <a href="{{ route('home') }}" class="nav-link"> Home</a>
-                    </li>
-                    <li class=" nav-item dropdown  {!! (Request::is('typography') || Request::is('advancedfeatures') || Request::is('grid') ? 'active' : '') !!}">
-                        <a href="#" aria-expanded="false" class="nav-link"> Features</a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ URL::to('typography') }}" class="dropdown-item">Typography</a>
-                            </li>
-                            <li><a href="{{ URL::to('advancedfeatures') }}" class="dropdown-item">Advanced Features</a>
-                            </li>
-                            <li><a href="{{ URL::to('grid') }}" class="dropdown-item">Grid System</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class=" nav-item dropdown {!! (Request::is('aboutus') || Request::is('timeline') || Request::is('faq') || Request::is('blank_page')  ? 'active' : '') !!}">
-                        <a href="#" class="nav-link"> Pages</a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ URL::to('aboutus') }}" class="dropdown-item">About Us</a>
-                            </li>
-                            <li><a href="{{ URL::to('timeline') }}" class="dropdown-item">Timeline</a></li>
-                            <li><a href="{{ URL::to('price') }}" class="dropdown-item">Price</a>
-                            </li>
-                            <li><a href="{{ URL::to('404') }}" class="dropdown-item">404 Error</a>
-                            </li>
-                            <li><a href="{{ URL::to('500') }}" class="dropdown-item">500 Error</a>
-                            </li>
-                            <li><a href="{{ URL::to('faq') }}" class="dropdown-item">FAQ</a>
-                            </li>
-                            <li><a href="{{ URL::to('blank_page') }}" class="dropdown-item">Blank</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown {!! (Request::is('products') || Request::is('single_product') || Request::is('compareproducts') || Request::is('category')  ? 'active' : '') !!}">
-                        <a href="#" class="nav-link"> Shop</a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ URL::to('products') }}" class="dropdown-item">Products</a>
-                            </li>
-                            <li><a href="{{ URL::to('single_product') }}" class="dropdown-item">Single Product</a>
-                            </li>
-                            <li><a href="{{ URL::to('compareproducts') }}" class="dropdown-item">Compare Products</a>
-                            </li>
-                            <li><a href="{{ URL::to('category') }}"  class="dropdown-item">Categories</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown {!! (Request::is('portfolio') || Request::is('portfolioitem') ? 'active' : '') !!}">
-                        <a href="#" class="nav-link"> Portfolio</a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ URL::to('portfolio') }}">Portfolio</a>
-                            </li>
-                            <li><a href="{{ URL::to('portfolioitem') }}">Portfolio Item</a>
-                            </li>
-                        </ul>
-                    </li>
-                    @if(Sentinel::check())
-                        <li class=" nav-item dropdown {!! (Request::is('user_emails/inbox') || Request::is('user_emails/compose') || Request::is('user_emails/sent') ? 'active' : '') !!}">
-                            <a href="#" aria-expanded="false" class="nav-link"> Emails</a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="{{ URL::to('user_emails/compose') }}" class="dropdown-item">Compose</a>
-                                </li>
-                                <li>
-                                    <a href="{{ URL::to('user_emails/inbox') }}" class="dropdown-item">Inbox</a>
-                                </li>
-                                <li>
-                                    <a href="{{ URL::to('user_emails/sent') }}" class="dropdown-item">Sent</a>
-                                </li>
-                            </ul>
-                        </li>
-                    @endif
-                    <li class="nav-item {!! (Request::is(
-                    'news*') ? 'active' : '') !!}"><a href="{{ URL::to('news') }}" class="nav-link">News</a>
-                    </li>
-                    <li class="nav-item {!! (Request::is(
-                    'blog') || Request::is('blogitem/*') ? 'active' : '') !!}"><a href="{{ URL::to('blog') }}" class="nav-link">
-                            Blog</a>
-                    </li>
-                    <li class="nav-item {!! (Request::is(
-                    'contact') ? 'active' : '') !!}"><a href="{{ URL::to('contact') }}" class="nav-link">Contact</a>
-                    </li>
 
                     {{--based on anyone login or not display menu items--}}
                     @if(Sentinel::guest())
-                        <li class="nav-item"><a href="{{ URL::to('login') }}" class="nav-link">Login</a>
-                        </li>
-                        <li class="nav-item"><a href="{{ URL::to('register') }}" class="nav-link">Register</a>
-                        </li>
+                        <li class="nav-item"><a href="{{ URL::to('login') }}" class="nav-link">Login</a></li>
                     @else
-                        <li class="nav-item {{ (Request::is('my-account') ? 'active' : '') }}"><a href="{{ URL::to('my-account') }}" class="nav-link">My
-                                Account</a>
-                        </li>
-                        <li class="nav-item"><a href="{{ URL::to('logout') }}" class="nav-link">Logout</a>
-                        </li>
+                        <li class="nav-item"><a href="{{ URL::to('admin') }}" class="nav-link">Admin Dashboard</a></li>
+
                     @endif
                 </ul>
             </div>
@@ -207,16 +122,41 @@
 <!-- //Header End -->
 
 <!-- slider / breadcrumbs section -->
-@yield('top')
+
+{{-- breadcrumb --}}
+
+    <div class="breadcum">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('guest') }}"> <i class="livicon icon3 icon4" data-name="home" data-size="18" data-loop="true" data-c="#3d3d3d" data-hc="#3d3d3d"></i>Sistem Permohonan Toner Online
+                            </a>
+                        </li>
+                    </ol>
+                    <div class="float-right mt-1">
+                        <img class="media-object" width="30" height="30" src="{{ asset('images/jataselangor.png') }}"
+                             alt="image">
+                        <i data-name="clip" data-size="20" data-loop="true" data-c="#3d3d3d" data-hc="#3d3d3d"></i> Pejabat Daerah / Tanah Klang
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- yield (top) dh tak perlu sebab dah masukkan section top dlm ni terus -->
 
 <!-- Content -->
 @yield('content')
 
 <!-- Footer Section Start -->
+
 <footer>
     <div class=" col-12 copyright">
         <div class="media">
-            <img class="media-object rounded-circle mr-3" src="{{ asset('images/logo kstore.png') }}"
+            <img class="media-object rounded-circle" src="{{ asset('images/logo kstore.png') }}"
                  alt="image">
             <div class="media-body">
                 <p class="media-heading text-justify">Copyright &copy; k-Store PDTK, 2019.</p>
@@ -224,6 +164,8 @@
             </div>
         </div>
     </div>
+
+
     <!-- //Footer Section End -->
 </footer>
 <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" data-original-title="Return to top"

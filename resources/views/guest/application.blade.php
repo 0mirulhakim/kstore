@@ -19,27 +19,18 @@
     <!--end of page level css-->
 @stop
 
-{{-- Page content --}}
+
 @section('content')
     <!-- Container Section Start -->
     <div class="container my-3">
-        <h2 id="single_portfolio_title"><label> Permohonan Toner</label></h2>
+        <h3 class="project">Nama Pemohon</h3>
+        <p class="text-justify">
+            Jawatan, Unit
+        </p>
+
         <div class="row details">
-            <!-- Slider Section Start -->
-            <div class="col-md-12  col-lg-6 col-12 wow bounceInLeft" data-wow-duration="1.5s">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-lg-12 slider">
-                        <div id="owl-demo" class="owl-carousel owl-theme">
-                           <div class="item"><img src="{{ asset('images/clipart_toners.jpg') }}" alt="slider-image" class="img-fluid"></div>
-                            <div class="item"><img src="{{ asset('images/save-toner.png') }}" alt="slider-image" class="img-fluid"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- //Slider Section End -->
-            <!-- Project Description Section Start -->
-            <div class="col-md-12 col-lg-6 col-12 wow bounceInRight" data-wow-duration="1.5s">
-                <h3 class="project">Permohonan Toner Hendaklah Dibuat 3 Hari sebelum Pengeluaran</h3>
+            <div class="col-md-12 col-lg-6 col-12">
+                <h3 class="project">Senarai Pencetak Berdaftar</h3>
                 <p class="text-justify">
                 <form action="{{ route('application') }}" role="form" id="form_controls" >
                     <div class="form-group">
@@ -48,20 +39,39 @@
 
                     <div class="input-group-append">
                         <input type="submit" class="btn btn-3d btn-info " value="Hantar">
-                                 </div>
+                    </div>
 
 
                 </form>
                 </p>
 
             </div>
-            <!-- //Project Description Section End -->
+
+            <div class="col-md-12 col-lg-6 col-12">
+                <h3 class="project">Borang Permohonan</h3>
+                <p class="text-justify">
+                <form action="{{ route('application') }}" role="form" id="form_controls" >
+                    <div class="form-group">
+                        <label for="nokp">Nombor Kad Pengenalan</label>
+                        <input class="form-control" placeholder="Sila Masukkan Nombor Kad Pengenalan 12 Digit Tanpa '-'" id="nokp"></div>
+
+                    <div class="input-group-append">
+                        <input type="submit" class="btn btn-3d btn-info " value="Hantar">
+                    </div>
+
+
+                </form>
+                </p>
+
+            </div>
+
         </div>
+
         <!-- Related Section Start -->
     </div>
     <!-- Related Setion End -->
-
 @stop
+
 
 {{-- page level scripts --}}
 @section('footer_scripts')

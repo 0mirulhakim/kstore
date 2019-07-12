@@ -14,6 +14,7 @@ include_once 'web_builder.php';
 Route::pattern('slug', '[a-z0-9- _]+');
 
 Route::get('/guest', 'guestController@showHome')->name('guest');
+Route::get('/application', 'guestController@toner_appl')->name('application');
 
 Route::group(['prefix' => 'admin', 'namespace'=>'Admin'], function () {
 
