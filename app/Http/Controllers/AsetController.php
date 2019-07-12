@@ -8,6 +8,6 @@ class AsetController extends Controller
 {
     public function formPrinter()
     {
-        return view('admin.aset.formPrinter' );
+        return view('admin.aset.formPrinter');
     }
 }
