@@ -1,5 +1,5 @@
 <ul id="menu" class="page-sidebar-menu">
-    @if(Sentinel::inRole('superadmin'))
+    @if(Sentinel::inRole('admin'))
     <li {!! (Request::is('admin') ? 'class="active"' : '') !!}>
         <a href="{{ route('admin.dashboard') }}">
             <i class="livicon" data-name="dashboard" data-size="18" data-c="#418BCA" data-hc="#418BCA"
