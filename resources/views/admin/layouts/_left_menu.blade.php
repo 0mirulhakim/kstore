@@ -856,8 +856,8 @@
                 <span class="fa arrow"></span>
             </a>
             <ul class="sub-menu">
-                <li {!! (Request::is('admin/form_examples') ? 'class="active"' : '') !!}>
-                    <a href="{{ URL::to('admin/form_examples') }}">
+                <li {!! (Request::is('admin/registerPrinter') ? 'class="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/registerPrinter') }}">
                         <i class="fa fa-angle-double-right"></i>
                         Daftar Aset Baru
                     </a>

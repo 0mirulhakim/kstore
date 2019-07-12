@@ -16,6 +16,9 @@ Route::pattern('slug', '[a-z0-9- _]+');
 Route::get('/guest', 'guestController@showHome')->name('guest');
 Route::get('/application', 'guestController@toner_appl')->name('application');
 
+#admin.Aset
+Route::get('/registerPrinter', 'AsetController@formPrinter')->name('registerPrinter');
+
 Route::group(['prefix' => 'admin', 'namespace'=>'Admin'], function () {
 
     # Error pages should be shown without requiring login
