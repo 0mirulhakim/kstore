@@ -28,6 +28,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/frontend/timeline.css') }}">
     <link type="text/css" rel="stylesheet" href="{{ asset('vendors/switchery/css/switchery.css') }}" />
     <link type="text/css" rel="stylesheet" href="{{ asset('vendors/bootstrap-switch/css/bootstrap-switch.css') }}">
+
+    <link href="{{ asset('vendors/iCheck/css/all.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/pages/form_layouts.css') }}" rel="stylesheet" type="text/css"/>
     <!--end of page level css-->
 @stop
 
@@ -100,7 +103,7 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Model</th>
+                                        <th class="col-md-6 my-2">Model</th>
                                         <th>Kuantiti Dimohon</th>
                                         <th>Baki Semasa</th>
                                     </tr>
@@ -108,9 +111,16 @@
                                     <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>Airi Satou</td>
-                                        <td>Kelly</td>
-                                        <td>Satou124</td>
+                                        <td><div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" class="custom-checkbox" value="">&nbsp;HP CF226A (26A)</label>
+                                            </div></td>
+                                        <td><div class="form-group">
+                                                 <input class="form-control" id="qty">
+                                            </div></td>
+                                        <td><div class="form-group">
+                                                <input class="form-control" id="bal" value="15" disabled>
+                                                        </div></td>
                                     </tr>
 
                                     </tbody>
