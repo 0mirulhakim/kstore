@@ -18,9 +18,11 @@ Route::get('/application', 'guestController@toner_appl')->name('application');
 
 Route::group(['prefix' => 'admin'], function (){
     Route::get('/registerprinter', 'AsetController@formPrinter')->name('registerPrinter');
+    Route::get('/aset', 'AsetController@index')->name('aset');
 });
 
 Route::group(['prefix' => 'admin', 'namespace'=>'Admin'], function () {
+
     # Error pages should be shown without requiring login
     Route::get('404', function () {
         return view('admin/404');

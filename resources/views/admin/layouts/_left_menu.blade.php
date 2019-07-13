@@ -856,8 +856,14 @@
                 <span class="fa arrow"></span>
             </a>
             <ul class="sub-menu">
-                <li {!! (Request::is('admin/registerPrinter') ? 'class="active"' : '') !!}>
-                    <a href="{{ URL::to('admin/registerPrinter') }}">
+                <li {!! (Request::is('admin/aset') ? 'class="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/aset') }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        Senarai Aset
+                    </a>
+                </li>
+                <li {!! (Request::is('admin/registerprinter') ? 'class="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/registerprinter') }}">
                         <i class="fa fa-angle-double-right"></i>
                         Daftar Aset Baru
                     </a>
