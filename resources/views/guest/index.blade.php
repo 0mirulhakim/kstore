@@ -41,7 +41,7 @@
             <div class="col-md-12 col-lg-6 col-12 wow bounceInRight" data-wow-duration="1.5s">
                 <h3 class="project">Permohonan Toner Hendaklah Dibuat 3 Hari sebelum Pengeluaran</h3>
                 <p class="text-justify">
-                <form action="{{ route('application') }}" role="form" id="form_controls" >
+                <form action="{{ route('application') }}" role="form" id="form_controls" method="GET">
                     <div class="form-group">
                         <label for="nokp">Nombor Kad Pengenalan</label>
                         <input class="form-control" placeholder="Sila Masukkan Nombor Kad Pengenalan 12 Digit Tanpa '-'" id="nokp"></div>

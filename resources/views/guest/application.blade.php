@@ -38,7 +38,8 @@
 @section('content')
     <!-- Container Section Start -->
     <div class="container my-3">
-        <h3 class="project">Siti Rohaya binti Mat Hasan</h3>
+        <h3 class="project">
+            Siti Rohaya binti Mat Hasan</h3>
         <p class="text-justify">
             Penolong Pegawai Teknologi Maklumat, Unit ICT
         </p>
@@ -125,8 +126,13 @@
 
                                     </tbody>
                                 </table>
+
+                            </div>
+                            <div class="col-md-12  col-sm-12 col-12  col-lg-12 text-right">
+                                <button type="submit" class="btn btn-responsive btn-primary btn-sm">Submit</button>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
