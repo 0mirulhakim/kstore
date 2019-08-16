@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Admin Login</title>
+    <title>Admin Login 2</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- global level css -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />

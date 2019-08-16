@@ -39,18 +39,25 @@
                 </a>
             </li>
             <li>
-                <a href="#">DataTables</a>
+                <a href="#">Aset</a>
             </li>
-            <li class="active">Advanced Data Tables</li>
+            <li class="active">Senarai Pencetak</li>
         </ol>
     </section>
     <!--section ends-->
     <section class="content pl-3 pr-3">
+
         <div class="row">
+
             <div class="col-lg-12 my-3">
                 <div class="card filterable">
                     <div class="card-header bg-primary text-white clearfix  ">
+                        <div class="float-right">
+
+                            <a href="{{ URL::to('admin/registerprinter') }}" class="btn btn-sm btn-success"><h5>Daftar Pencetak</h5></a>
+                        </div>
                         <div class="float-left">
+
                             <div class="caption">
                                 <i class="livicon" data-name="camera" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
                                 TableTools
@@ -61,394 +68,26 @@
                         <table class="table table-striped table-bordered" id="table1" width="100%">
                             <thead>
                             <tr>
-
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>User Name</th>
-                                <th>
-                                    User E-mail
-                                </th>
+                                <th>#</th>
+                                <th>Brand</th>
+                                <th>Model</th>
+                                <th>No. Siri</th>
+                                <th>No. Daftar Aset</th>
+                                <th>Tarikh Terima</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-
+                                <td>1</td>
                                 <td>Mark</td>
                                 <td>Otto</td>
                                 <td>Markotto</td>
                                 <td>
                                     Markotto@test.com
                                 </td>
-                            </tr>
-                            <tr>
-
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>
-                                    JacobThornton
-                                </td>
-                                <td>
-                                    JacobThornton@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Mark</td>
-                                <td>Otto</td>
                                 <td>Markotto</td>
-                                <td>
-                                    Markotto@test.com
-                                </td>
                             </tr>
-                            <tr>
 
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>
-                                    JacobThornton
-                                </td>
-                                <td>
-                                    JacobThornton@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Markotto</td>
-                                <td>
-                                    Markotto@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>
-                                    JacobThornton
-                                </td>
-                                <td>
-                                    JacobThornton@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Markotto</td>
-                                <td>
-                                    Markotto@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>
-                                    JacobThornton
-                                </td>
-                                <td>
-                                    JacobThornton@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Markotto</td>
-                                <td>
-                                    Markotto@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>
-                                    JacobThornton
-                                </td>
-                                <td>
-                                    JacobThornton@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Markotto</td>
-                                <td>
-                                    Markotto@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>
-                                    JacobThornton
-                                </td>
-                                <td>
-                                    JacobThornton@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Markotto</td>
-                                <td>
-                                    Markotto@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>
-                                    JacobThornton
-                                </td>
-                                <td>
-                                    JacobThornton@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Markotto</td>
-                                <td>
-                                    Markotto@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>
-                                    JacobThornton
-                                </td>
-                                <td>
-                                    JacobThornton@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Markotto</td>
-                                <td>
-                                    Markotto@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>
-                                    JacobThornton
-                                </td>
-                                <td>
-                                    JacobThornton@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>
-                                    Larrythe Bird
-                                </td>
-                                <td>
-                                    LarrytheBird@test.com
-                                </td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>

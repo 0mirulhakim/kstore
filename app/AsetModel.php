@@ -9,7 +9,11 @@ class AsetModel extends Model
     protected $table = 'aset_models';
     protected $guarded  = [];
 
-    public function Printers(){
-        return $this->hasMany('Printer');
+    public function Printer(){
+        return $this->hasMany('App\Printer');
+    }
+
+    public function Brand(){
+        return $this->belongsTo('App\Brand', 'aset_brand_id');
     }
 }

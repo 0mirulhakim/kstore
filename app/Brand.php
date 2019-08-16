@@ -10,6 +10,10 @@ class Brand extends Model
     protected $guarded  = [];
 
     public function Printers(){
-        return $this->hasMany('Printer');
+        return $this->hasMany('App\Printer');
+    }
+
+    public function AsetModel(){
+        return $this->belongsTo('App\AsetModel');
     }
 }

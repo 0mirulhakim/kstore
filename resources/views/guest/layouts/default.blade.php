@@ -24,7 +24,7 @@
             background-color: transparent !important;
         }
         .indexpage.navbar-nav >.nav-item .nav-link:hover {
-            color: #01bc8c;
+            color: #bc01b3;
         }
     </style>
     <!--end of global css -->
@@ -37,10 +37,16 @@
 <!-- Header Start -->
 <header>
     <!--Icon Section Start-->
+    <div id="notific">
+        @include('notifications')
+    </div>
     <div class="icon-section">
         <div class="container">
+
+
             <div class="row">
                 <div class="col-lg-4 col-8 col-md-4 mt-2">
+
                     <ul class="list-inline">
                         <li>
                             <a href="#"> <i class="livicon" data-name="facebook" data-size="18" data-loop="true" data-c="#fff"
@@ -95,7 +101,7 @@
     <div class="container indexpage">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('images/e-store.png') }}"
+            <a class="navbar-brand" href="{{ route('home') }}"><img src="{{ asset('images/e-toner.png') }}"
                                                                     alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,9 +111,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto  margin_right">
 
+                    <li class="nav-item"><a href="{{ URL::to('semakan') }}" class="nav-link">Semak Status Permohonan</a></li>
+                    <li class="nav-item"><a href="{{ URL::to('history') }}" class="nav-link">Sejarah Permohonan</a></li>
+
                     {{--based on anyone login or not display menu items--}}
                     @if(Sentinel::guest())
-                        <li class="nav-item"><a href="{{ URL::to('login') }}" class="nav-link">Login</a></li>
+                        <li class="nav-item"><a href="{{ URL::to('admin/login') }}" class="nav-link">Login</a></li>
                     @else
                         <li class="nav-item"><a href="{{ URL::to('admin') }}" class="nav-link">Admin Dashboard</a></li>
 
@@ -160,7 +169,7 @@
                  alt="image">
             <div class="media-body">
                 <p class="media-heading text-justify">Copyright &copy; k-Store PDTK, 2019.</p>
-                <p class="text-right"><i>Version 1.0</i></p>
+                <p class="text-right"><i>Version 1.2</i></p>
             </div>
         </div>
     </div>

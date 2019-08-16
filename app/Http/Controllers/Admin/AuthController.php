@@ -42,6 +42,8 @@ class AuthController extends JoshController
         return view('admin.login');
     }
 
+
+
     /**
      * Account sign in form processing.
      * @param Request $request
@@ -75,6 +77,8 @@ class AuthController extends JoshController
         // Ooops.. something went wrong
         return Redirect::back()->withInput()->withErrors($this->messageBag);
     }
+
+
 
     /**
      * Account sign up form processing.

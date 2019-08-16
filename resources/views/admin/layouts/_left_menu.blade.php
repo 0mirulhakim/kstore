@@ -1,5 +1,5 @@
 <ul id="menu" class="page-sidebar-menu">
-    @if(Sentinel::inRole('admin'))
+    @if(Sentinel::inRole('superadmin'))
     <li {!! (Request::is('admin') ? 'class="active"' : '') !!}>
         <a href="{{ route('admin.dashboard') }}">
             <i class="livicon" data-name="dashboard" data-size="18" data-c="#418BCA" data-hc="#418BCA"
@@ -800,18 +800,19 @@
                 <span class="fa arrow"></span>
             </a>
             <ul class="sub-menu">
-                <li {!! (Request::is('admin/form_examples') ? 'class="active"' : '') !!}>
-                    <a href="{{ URL::to('admin/form_examples') }}">
+                <li {!! (Request::is('admin/newApplication') ? 'class="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/newApplication') }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        Permohonan Baru
+                    </a>
+                </li>
+                <li {!! (Request::is('admin/verifyApplication') ? 'class="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/verifyApplication') }}">
                         <i class="fa fa-angle-double-right"></i>
                        Sahkan Permohonan
                     </a>
                 </li>
-                <li {!! (Request::is('admin/editor') ? 'class="active"' : '') !!}>
-                    <a href="{{ URL::to('admin/editor') }}">
-                        <i class="fa fa-angle-double-right"></i>
-                        Arkib Permohonan
-                    </a>
-                </li>
+
                 <li {!! (Request::is('admin/editor') ? 'class="active"' : '') !!}>
                     <a href="{{ URL::to('admin/editor') }}">
                         <i class="fa fa-angle-double-right"></i>
@@ -830,6 +831,12 @@
                 <span class="fa arrow"></span>
             </a>
             <ul class="sub-menu">
+                <li {!! (Request::is('admin/form_examples') ? 'class="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/form_examples') }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        Transaksi Stok Toner
+                    </a>
+                </li>
                 <li {!! (Request::is('admin/form_examples') ? 'class="active"' : '') !!}>
                     <a href="{{ URL::to('admin/form_examples') }}">
                         <i class="fa fa-angle-double-right"></i>
@@ -929,6 +936,46 @@
 
             </ul>
         </li>
+
+            <li {!! (Request::is('admin/form_examples') || Request::is('admin/editor') || Request::is('admin/editor2')
+    || Request::is('admin/form_layout') || Request::is('admin/validation') || Request::is('admin/formelements') || Request::is('admin/dropdowns')
+    || Request::is('admin/radio_checkbox') || Request::is('admin/ratings') || Request::is('admin/form_layouts') || Request::is('admin/formwizard')
+    || Request::is('admin/accordionformwizard') || Request::is('admin/datepicker') | Request::is('admin/advanced_datepickers')? 'class="active"' : '') !!}>
+                <a href="#">
+                    <i class="livicon" data-name="doc-portrait" data-c="#67C5DF" data-hc="#67C5DF"
+                       data-size="18" data-loop="true"></i>
+                    <span class="title">Daftar Kod</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li {!! (Request::is('admin/Brand') ? 'class="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/Brand') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Kod Jenama
+                        </a>
+                    </li>
+                    <li {!! (Request::is('admin/asetModel') ? 'class="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/asetModel') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Kod Model Pencetak
+                        </a>
+                    </li>
+                    <li {!! (Request::is('admin/toner') ? 'class="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/toner') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Kod Model Toner
+                        </a>
+                    </li>
+                    <li {!! (Request::is('admin/editor') ? 'class="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/editor') }}">
+                            <i class="fa fa-angle-double-right"></i>
+                            Kod Pembekal
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
         <li {!! (Request::is('admin') ? 'class="active"' : '') !!}>
             <a href="{{ route('admin.dashboard') }}">
                 <i class="livicon" data-name="dashboard" data-size="18" data-c="#418BCA" data-hc="#418BCA"

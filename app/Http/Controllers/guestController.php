@@ -18,9 +18,9 @@ use File;
 class guestController extends Controller
 {
     public function showHome()
-    {
-        return view('guest.index' );
-    }
+{
+    return view('guest.index' );
+}
 
     Public function toner_appl(){
         $keyword = request()->get('nokp');
@@ -42,4 +42,31 @@ class guestController extends Controller
         //dd($applications);
         return view('guest.application');//->with(compact('staffs'));
     }
+
+    Public function formSemak(){
+
+        return view('guest.semak');//->with(compact('staffs'));
+    }
+
+    Public function Semak(){
+
+        return view('guest.semak_result');//->with(compact('staffs'));
+    }
+
+    Public function formSejarah(){
+
+        return view('guest.sejarah');//->with(compact('staffs'));
+    }
+
+    Public function Sejarah(){
+
+        return view('guest.sejarah_detail');//->with(compact('staffs'));
+    }
+
+    Public function SubmitApplication(){
+
+        return redirect('guest')->with('success', 'Permohonan Telah Berjaya Dihantar \n No. ID Permohonan Anda Adalah: 0030');
+    }
+
+
 }

@@ -55,7 +55,7 @@
                         <form action="{{ route('signin') }}" autocomplete="on" method="post" role="form" id="login_form"
                               class="my-3">
                             <h3 class="black_bg">
-                                <img src="{{ asset('img/logo.png') }}" alt="josh logo">
+                                <img src="{{ asset('img/e-toner.png') }}" alt="josh logo">
                                 <br>Log In</h3>
                             <!-- CSRF Token -->
                             <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
@@ -95,33 +95,8 @@
                             <p class="login button">
                                 <input type="submit" value="Log In" class="btn btn-success"/>
                             </p>
-                            <p class="change_link">
-                                <a href="#toforgot">
-                                    <button type="button"
-                                            class="btn btn-responsive botton-alignment btn-warning btn-sm">Forgot
-                                        password
-                                    </button>
-                                </a>
-                                <a href="#toregister">
-                                    <button type="button" id="signup"
-                                            class="btn btn-responsive botton-alignment btn-success btn-sm"
-                                            style="float:right;">Sign Up
-                                    </button>
-                                </a>
-                            </p>
-                            <div class="row">
-                                <div class="col-lg-12 text-center social_login mb-3">
-                                    <a class="btn btn-block btn-social btn-facebook" href="{{ url('/facebook') }}">
-                                        <i class="fab fa-facebook-f"></i> Sign in with Facebook
-                                    </a>
-                                    <a class="btn btn-block btn-social btn-google-plus" href="{{ url('/google') }}">
-                                        <i class="fab fa-google-plus-g"></i> Sign in with Google
-                                    </a>
-                                    <a class="btn btn-block btn-social btn-linkedin" href="{{ url('/linkedin') }}">
-                                        <i class="fab fa-linkedin-in"></i> Sign in with LinkedIn
-                                    </a>
-                                </div>
-                            </div>
+
+
                         </form>
                     </div>
                     <div id="register" class="animate form">

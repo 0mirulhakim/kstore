@@ -31,6 +31,9 @@
 
     <link href="{{ asset('vendors/iCheck/css/all.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('css/pages/form_layouts.css') }}" rel="stylesheet" type="text/css"/>
+
+    <link href="{{ asset('vendors/sweetalert/css/sweetalert2.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('vendors/animate/animate.min.css') }}"/>
     <!--end of page level css-->
 @stop
 
@@ -39,9 +42,9 @@
     <!-- Container Section Start -->
     <div class="container my-3">
         <h3 class="project">
-            Siti Rohaya binti Mat Hasan</h3>
+            Suhana binti Mohd Bahari</h3>
         <p class="text-justify">
-            Penolong Pegawai Teknologi Maklumat, Unit ICT
+            Ketua Pembantu Tadbir, Unit PSM
         </p>
         <div class="container advfeatures">
             <div class="row">
@@ -77,7 +80,7 @@
                                         <tr>
                                             <td>2</td>
                                             <td>HP Color Laserjet CP5225</td>
-                                            <td>DTK/KP/15/07</td>
+                                            <td>PDTK/KP/15/07</td>
                                             <td>
                                                 <span class="label label-sm bg-danger text-white">Tidak Aktif</span>
                                             </td>
@@ -97,13 +100,13 @@
                                 <i class="fa fa-chevron-up"></i>
                             </span>
                         </div>
+                        <form action="{{ route('hantarpermohonan') }}" role="form" id="form_controls" method="GET">
                         <div class="card-body">
-                            <h5>HP Laserjet Pro M402dn</h5>
+                            <h5>1. HP Laserjet Pro M402dn</h5>
                             <div class="table-scrollable">
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th class="col-md-6 my-2">Model</th>
                                         <th>Kuantiti Dimohon</th>
                                         <th>Baki Semasa</th>
@@ -111,7 +114,6 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td>1</td>
                                         <td><div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" class="custom-checkbox" value="">&nbsp;HP CF226A (26A)</label>
@@ -120,7 +122,7 @@
                                                  <input class="form-control" id="qty">
                                             </div></td>
                                         <td><div class="form-group">
-                                                <input class="form-control" id="bal" value="15" disabled>
+                                                <input class="form-control" id="bal" value="10" disabled>
                                                         </div></td>
                                     </tr>
 
@@ -128,11 +130,78 @@
                                 </table>
 
                             </div>
+
+                            <h5>2. HP Color Laserjet CP5225</h5>
+                            <div class="table-scrollable">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th class="col-md-6 my-2">Model</th>
+                                        <th>Kuantiti Dimohon</th>
+                                        <th>Baki Semasa</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" class="custom-checkbox" value="">&nbsp;CE740A - Black (HP 307A)</label>
+                                            </div></td>
+                                        <td><div class="form-group">
+                                                <input class="form-control" id="qty">
+                                            </div></td>
+                                        <td><div class="form-group">
+                                                <input class="form-control" id="bal" value="5" disabled>
+                                            </div></td>
+                                    </tr>
+                                    <tr>
+
+                                        <td><div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" class="custom-checkbox" value="">&nbsp;CE741A - Magenta (HP 307A)</label>
+                                            </div></td>
+                                        <td><div class="form-group">
+                                                <input class="form-control" id="qty">
+                                            </div></td>
+                                        <td><div class="form-group">
+                                                <input class="form-control" id="bal" value="5" disabled>
+                                            </div></td>
+                                    </tr>
+                                    <tr>
+
+                                        <td><div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" class="custom-checkbox" value="">&nbsp;CE742A - Cyan (HP 307A)</label>
+                                            </div></td>
+                                        <td><div class="form-group">
+                                                <input class="form-control" id="qty">
+                                            </div></td>
+                                        <td><div class="form-group">
+                                                <input class="form-control" id="bal" value="5" disabled>
+                                            </div></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" class="custom-checkbox" value="">&nbsp;CE743A - Yellow (HP 307A)</label>
+                                            </div></td>
+                                        <td><div class="form-group">
+                                                <input class="form-control" id="qty">
+                                            </div></td>
+                                        <td><div class="form-group">
+                                                <input class="form-control" id="bal" value="5" disabled>
+                                            </div></td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
                             <div class="col-md-12  col-sm-12 col-12  col-lg-12 text-right">
-                                <button type="submit" class="btn btn-responsive btn-primary btn-sm">Submit</button>
+                                <button type="submit" class="btn btn-responsive btn-primary btn-sm" id="">Submit</button>
                             </div>
                         </div>
-
+                        </form>
                     </div>
                 </div>
             </div>
@@ -141,7 +210,7 @@
 
 
         <!-- Related Section Start -->
-
+    </div>
     <!-- Related Setion End -->
 @stop
 
@@ -154,5 +223,7 @@
     <script type="text/javascript" src="{{ asset('js/frontend/carousel.js') }}"></script>
     <script type="text/javascript" src="{{ asset('vendors/countUp.js/js/countUp.js') }}"></script>
     <script src="{{ asset('js/pages/custom_buttons.js') }}"></script>
+    <script src="{{ asset('vendors/sweetalert/js/sweetalert2.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/pages/custom_sweetalert.js') }}" type="text/javascript"></script>
     <!--page level js ends-->
 @stop

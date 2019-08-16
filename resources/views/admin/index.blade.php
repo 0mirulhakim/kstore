@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-Josh Admin Template
+e-Store
 @parent
 @stop
 
@@ -26,7 +26,7 @@ Josh Admin Template
 {{-- Page content --}}
 @section('content')
 <section class="content-header">
-    <h1>Welcome to Dashboard   <span class="d-none d-md-inline-block header_info">( Dynamic Dashboard )</span></h1>
+    <h1>Sistem Pengurusan Toner <span class="d-none d-md-inline-block header_info">Pejabat Daerah / Tanah Klang</span></h1>
     <ol class="breadcrumb">
         <li class=" breadcrumb-item active">
             <a href="#">
@@ -39,12 +39,6 @@ Josh Admin Template
 
 <!--</section>-->
 <section class="content pl-3 pr-3">
-    @if ($analytics_error != 0)
-    <div class="alert alert-danger alert-dismissable margin5">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Error:</strong> You Need to add Google Analytics file for full working of the page
-    </div>
-    @endif
     <div class="row">
         <div class="col-lg-6 col-xl-3 col-md-6 col-sm-6 margin_10 animated fadeInLeftBig">
             <!-- Trans label pie charts strats here-->
@@ -53,9 +47,9 @@ Josh Admin Template
                     <div class="col-12 float-left nopadmar">
                         <div class="row">
                             <div class="square_box col-6 text-right">
-                                <span>Visitors</span>
+                                <span>Permohonan Baru</span>
 
-                                <div class="number" id="myTargetElement3"></div>
+                                <div class="number" id=""><a href="{{ URL::to('admin/newApplication') }}">3</a></div>
                             </div>
                             <div class="col-6">
                             <span class="widget_circle3 float-right">
@@ -77,9 +71,9 @@ Josh Admin Template
                     <div class="col-12 float-left nopadmar">
                         <div class="row">
                             <div class="square_box col-6 text-right">
-                                <span>Users</span>
+                                <span>Permohonan Belum DIsahkan</span>
 
-                                <div class="number" id="myTargetElement4"></div>
+                                <div class="number" id=""><a href="{{ URL::to('admin/verifyApplication') }}">1</a></div>
                             </div>
                             <div class="col-6">
                             <span class="widget_circle4 float-right">
@@ -101,9 +95,9 @@ Josh Admin Template
                     <div class="col-12 float-left nopadmar">
                         <div class="row">
                             <div class="square_box col-6 text-right">
-                                <span>Page Views</span>
+                                <span>Baki Toner Kurang Dari 4 Unit</span>
 
-                                <div class="number" id="myTargetElement1"></div>
+                                <div class="number" id="">3</div>
                             </div>
                             <div class="col-6">
                             <span class="widget_circle1 float-right">
@@ -125,9 +119,9 @@ Josh Admin Template
                     <div class="col-12 float-left nopadmar">
                         <div class="row">
                             <div class="square_box col-6 text-right">
-                                <span>Articles</span>
+                                <span>Pengeluaran Stok Bulan Semasa</span>
 
-                                <div class="number" id="myTargetElement2"></div>
+                                <div class="number" id="">10</div>
                             </div>
                             <div class="col-6">
                             <span class="widget_circle2 float-right">
@@ -153,7 +147,7 @@ Josh Admin Template
                         <div class="card-header bg-white">
                             <span>
                                 <i class="livicon" data-name="barchart" data-size="16" data-loop="true" data-c="#EF6F6C"
-                                   data-hc="#EF6F6C"></i> Users Stats
+                                   data-hc="#EF6F6C"></i> Penggunaan
                             </span>
                         </div>
                         <div class="card-body">
@@ -169,7 +163,7 @@ Josh Admin Template
                             <h4 class="card-title">
                                 <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#F89A14"
                                    data-hc="#F89A14"></i>
-                                User Roles
+                                Toner Kurang dari 4 Unit
                             </h4>
 
                         </div>
@@ -178,37 +172,8 @@ Josh Admin Template
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6 col-sm-6 col-12 my-3 ">
-                    <div class="card card-border">
-                        <div class="card-header">
-                            <h4 class="card-title">
-                                <i class="livicon" data-name="barchart" data-size="16" data-loop="true" data-c="#67C5DF"
-                                   data-hc="#67C5DF"></i>
-                                Yearly visitors
-                            </h4>
 
-                        </div>
-                        <div class="card-body nopadmar">
-                            <div id="bar_chart"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 col-lg-12 col-12">
-                    <div class="card card-border map">
 
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <i class="livicon" data-name="map" data-size="16" data-loop="true" data-c="#515763"
-                                   data-hc="#515763"></i>
-                                Users from countries
-                            </h3>
-
-                        </div>
-                        <div class="card-body nopadmar">
-                            {!! $geo->html() !!}
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="col-lg-4 col-md-12 col-sm-12 col-12 my-lg-0 my-3 my-md-3 my-sm-0">
@@ -217,11 +182,13 @@ Josh Admin Template
                     <span>
                         <i class="livicon" data-name="users" data-size="18" data-color="#00bc8c" data-hc="#00bc8c"
                            data-l="true"></i>
-                        Recent Users
+                        Toner Kurang dari 4 Unit
                     </span>
                 </div>
+
                 <div class="card-body nopadmar users">
-                    @foreach($users as $user )
+
+                <!--         @foreach($users as $user )
                     <div class="media">
                         <div>
                             @if($user->pic)
@@ -240,53 +207,16 @@ Josh Admin Template
                         </div>
                     </div>
                     @endforeach
-
+-->
                 </div>
             </div>
             <div class="card card-border my-3">
-                <div class="card-header">
-                    <h4 class="card-title">
-                        <i class="livicon" data-name="eye-open" data-size="16" data-loop="true" data-c="#EF6F6C"
-                           data-hc="#EF6F6C"></i>
-                        This week visitors
-                    </h4>
 
-                </div>
                 <div class="card-body nopadmar">
                     <div id="visitors_chart"></div>
                 </div>
             </div>
-            <div class="card card-border">
-                <div class="card-header border-light">
-                    <h3 class="card-title">
-                        <i class="livicon" data-name="pen" data-size="16" data-color="#00bc8c" data-hc="#00bc8c"
-                           data-l="true"></i>
-                        Recent Blogs
-                    </h3>
-                </div>
-                <div class="card-body nopadmar blogs">
-                    @foreach($blogs as $blog )
-                    <div class="media">
-                        <div>
-                            @if($blog->author->pic)
-                            <img src="{{  $blog->author->pic }}"
-                                 class="media-object rounded-circle">
-                            @else
-                            <img src="{{ asset('images/authors/no_avatar.jpg') }}"
-                                 class="media-object rounded-circle">
-                            @endif
-                        </div>
 
-                        <div class="media-body ml-3">
-                            <h5 class="media-heading">{{ $blog->title }}</h5>
-                            <p>category:  {{ $blog->category->title }} <span
-                                    class="user_create_date float-right">by  {{ $blog->author->full_name }} </span></p>
-                        </div>
-                    </div>
-                    @endforeach
-
-                </div>
-            </div>
         </div>
     </div>
 </section>

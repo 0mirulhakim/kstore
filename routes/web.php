@@ -15,10 +15,40 @@ Route::pattern('slug', '[a-z0-9- _]+');
 
 Route::get('/guest', 'guestController@showHome')->name('guest');
 Route::get('/application', 'guestController@toner_appl')->name('application');
+Route::get('/semakan', 'guestController@formSemak')->name('semak-status');
+Route::get('/semak_res', 'guestController@Semak')->name('semak');
+Route::get('/history', 'guestController@formSejarah')->name('history');
+Route::get('/detailhistory', 'guestController@Sejarah')->name('detailhistory');
+Route::get('/hantarpermohonan', 'guestController@SubmitApplication')->name('hantarpermohonan');
 
-Route::group(['prefix' => 'admin'], function (){
+
+Route::group(['prefix' => 'admin', 'as'=> 'brand:'], function () {
+    Route::get('/Brand', 'AsetController@Brand')->name('Brand');
+    Route::get('/createBrand', 'AsetController@createBrand')->name('createBrand');
+    Route::post('/storeBrand', 'AsetController@storeBrand')->name('storeBrand');
+});
+
+Route::group(['prefix' => 'admin', 'as'=> 'model:'], function () {
+    Route::get('/asetModel', 'AsetController@asetModel')->name('asetModel');
+    Route::get('/createModel', 'AsetController@createModel')->name('createModel');
+    Route::post('/storeModel', 'AsetController@storeModel')->name('storeModel');
+});
+
+Route::group(['prefix' => 'admin', 'as'=> 'toner:'], function () {
+    Route::get('/toner', 'TonerController@index')->name('toner');
+    Route::get('/list{model}', 'TonerController@tonerList')->name('list');
+
+});
+
+Route::group(['prefix' => 'admin'], function () {
     Route::get('/registerprinter', 'AsetController@formPrinter')->name('registerPrinter');
     Route::get('/aset', 'AsetController@index')->name('aset');
+    Route::get('/newApplication', 'TonerController@newAppl')->name('newApplication');
+    Route::get('/verifyApplication', 'TonerController@verifyAppl')->name('verifyApplication');
+    Route::get('/processApplication', 'TonerController@processAppl')->name('processApplication');
+    Route::get('/submitpengesahan', 'TonerController@SubmitApproval')->name('submitpengesahan');
+    Route::get('/pengesahan', 'TonerController@submitverifyAppl')->name('pengesahan');
+
 });
 
 Route::group(['prefix' => 'admin', 'namespace'=>'Admin'], function () {
@@ -72,6 +102,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'as' => 'admin.'], f
 
     # Dashboard / Index
     Route::get('/', 'JoshController@showHome')->name('dashboard');
+
     # crop demo
     Route::post('crop_demo', 'JoshController@crop_demo')->name('crop_demo');
     //Log viewer routes
@@ -274,7 +305,7 @@ Route::post('contact', 'FrontEndController@postContact')->name('contact');
 
 #frontend views
 Route::get('/', ['as' => 'home', function () {
-    return view('index');
+    return view('guest.index');
 }]);
 
 Route::get('blog','BlogController@index')->name('blog');

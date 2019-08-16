@@ -93,7 +93,7 @@ class FrontEndController extends JoshController
     /**
      * get user details and display
      */
-    public function myAccount()
+  public function myAccount()
     {
         $user = Sentinel::getUser();
         $countries = $this->countries;

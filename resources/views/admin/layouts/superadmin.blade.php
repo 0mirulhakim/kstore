@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>
         @section('title')
-            | PDTK
+            | Josh Admin Template
         @show
     </title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
@@ -25,13 +25,13 @@
 
     <!-- end of global css -->
     <!--page level css-->
-    @yield('header_styles')
-            <!--end of page level css-->
+@yield('header_styles')
+<!--end of page level css-->
 
 <body class="skin-josh">
 <header class="header">
-    <a href="{{ route('admin.dashboard') }}" class="logo">
-        <img src="{{ asset('img/e-toner-white.png') }}" alt="logo">
+    <a href="{{ route('admin.dashboard2') }}" class="logo">
+        <img src="{{ asset('img/logo.png') }}" alt="logo">
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->
@@ -42,6 +42,8 @@
         </div>
         <div class="navbar-right toggle">
             <ul class="nav navbar-nav  list-inline">
+                @include('admin.layouts._messages')
+                @include('admin.layouts._notifications')
                 <li class=" nav-item dropdown user user-menu">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         @if(Sentinel::getUser()->pic)
@@ -160,8 +162,8 @@
                 </div>
                 <div class="clearfix"></div>
                 <!-- BEGIN SIDEBAR MENU -->
-                @include('admin.layouts._left_menu')
-                <!-- END SIDEBAR MENU -->
+            @include('admin.layouts._left_menu_superadmin')
+            <!-- END SIDEBAR MENU -->
             </div>
         </section>
     </aside>
@@ -169,10 +171,10 @@
 
         <!-- Notifications -->
         <div id="notific">
-        @include('notifications')
+            @include('notifications')
         </div>
 
-                <!-- Content -->
+        <!-- Content -->
         @yield('content')
 
     </aside>
@@ -192,6 +194,6 @@
 <!-- end of global js -->
 <!-- begin page level js -->
 @yield('footer_scripts')
-        <!-- end page level js -->
+<!-- end page level js -->
 </body>
 </html>
