@@ -50,7 +50,7 @@
             <li>
                 <a href="#">Daftar Kod</a>
             </li>
-            <li class="bg-active">Toner</li>
+            <li class="bg-active">Senarai Toner</li>
         </ol>
     </section>
 
@@ -64,8 +64,7 @@
                     <div class="card ">
 
                         <div class="card-header bg-primary text-white">
-                            <i class="livicon" data-name="desktop" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i> Model Pencetak ???
-                            <span class="float-right btn btn-sm btn-warning"><a href="#">Daftar Model Toner</a> </span>
+                            <i class="livicon" data-name="desktop" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i> Semua Toner
                             <span class="float-right clickable">
                             </span>
                         </div>
@@ -78,8 +77,10 @@
                                         <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Kod Toner</th>
+                                            <th>Model Pencetak</th>
+                                            <th>Kod Toner / SKU No</th>
                                             <th>Model Toner</th>
+                                            <th>Edit</th>
                                         </tr>
                                         </thead>
                                         <tbody>
