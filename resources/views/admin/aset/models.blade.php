@@ -63,7 +63,7 @@
                     <div class="card ">
 
                         <div class="card-header bg-primary text-white">
-                            <span class="float-right btn btn-sm btn-warning"><a href="{{ route('model:createModel') }}">Daftar Model</a> </span>
+                            <span class="float-right btn btn-sm btn-warning"><a href="{{ route('model:createModel') }}">Daftar Pencetak</a> </span>
                             <span class="float-right clickable">
                             </span>
                         </div>
@@ -89,10 +89,10 @@
                                                 <td>{{ $data->Brand->name }}</td>
                                                 <td>{{ $data->name }}</td>
                                                 <td><a href="{{ route('toner:list',[$data->id]) }}">
-                                                    <i class=".align-self-center fa-2x far fa-edit"></i>
+                                                    <i class=".align-self-center fa-2x far fa-edit" data-toggle="tooltip" data-original-title="Daftar/Edit Toner"></i>
                                                     </a></td>
                                                 <td><a href="">
-                                                        <i class=".align-self-center fa-2x far fa-edit"></i>
+                                                        <i class=".align-self-center fa-2x far fa-edit" data-toggle="tooltip" data-original-title="Edit Model Pencetak"></i>
                                                     </a>
                                                 </td>
                                             </tr>

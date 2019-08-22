@@ -39,7 +39,7 @@
                             {{ method_field('post') }}
                             <div class="form-group">
                                 <div class="row">
-                                    <input type="text" id="form-text-input"
+                                    <input type="hidden" id="form-text-input"
                                            name="aset_model_id"
                                            class="form-control" value="{{ $model }}">
 
