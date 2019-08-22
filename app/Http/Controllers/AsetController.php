@@ -69,6 +69,7 @@ class AsetController extends Controller
         $data = request()->validate(['aset_brand_id' => 'required|integer', 'name' => 'required|unique:aset_models,name'],
             ['aset_brand_id.required' => 'Sila Pilih Jenama', 'name.required' => 'Sila Masukkan Model', 'name.unique' => 'Model Telah Wujud']);
         AsetModel::create($data);
+
         return $this->asetModel();
     }
 

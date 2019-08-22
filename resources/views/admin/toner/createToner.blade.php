@@ -1,6 +1,6 @@
 @extends('admin/layouts/default')
 @section('title')
-    Daftar Kod Jenama
+    Daftar Toner
     @parent
 @stop
 
@@ -14,7 +14,7 @@
 
     <section class="content-header">
         <!--section starts-->
-        <h1>Daftar Kod Jenama</h1>
+        <h1>Daftar Toner</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="{{ route('admin.dashboard') }}">
@@ -25,7 +25,7 @@
             <li>
                 <a href="#">Daftar</a>
             </li>
-            <li class="active">Kod Jenama</li>
+            <li class="active">Kod Toner</li>
         </ol>
     </section>
 
@@ -34,18 +34,32 @@
             <div class="col-lg-12">
                 <div class="card ">
                     <div class="card-body border">
-                        <form action="{{ route('brand:storeBrand') }}" method="POST" enctype="multipart/form-data" class="form-horizontal form-bordered">
+                        <form action="{{ route('toner:storeToner',[$model]) }}" method="POST" enctype="multipart/form-data" class="form-horizontal form-bordered">
                             @csrf
                             {{ method_field('post') }}
                             <div class="form-group">
                                 <div class="row">
+                                    <input type="text" id="form-text-input"
+                                           name="aset_model_id"
+                                           class="form-control" value="{{ $model }}">
+
                                     <label class="col-md-3 control-label"
-                                           for="form-text-input">Jenama</label>
+                                           for="form-text-input">Model Toner</label>
                                     <div class="col-md-3">
                                         <input type="text" id="form-text-input"
-                                               name="name"
-                                               class="form-control" placeholder="Masukkan Jenama Pencetak">
-
+                                               name="model"
+                                               class="form-control" placeholder="Masukkan Model Toner">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-3 control-label"
+                                           for="form-text-input">Kod Toner / SKU NO</label>
+                                    <div class="col-md-3">
+                                        <input type="text" id="form-text-input"
+                                               name="code"
+                                               class="form-control" placeholder="Masukkan SKU NO">
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +70,7 @@
                                         <button type="submit" class="btn btn-effect-ripple btn-primary">
                                             Simpan
                                         </button>
-                                        <span class="btn btn-effect-ripple btn-light"><a href="{{ route('brand:Brand') }}">Kembali</a> </span>
+                                        <span class="btn btn-effect-ripple btn-light"><a href="{{ route('toner:list',[$model]) }}">Kembali</a> </span>
 
                                     </div>
                                 </div>
@@ -66,7 +80,7 @@
                 </div>
 
             </div>
-            </div>
+        </div>
 
 
     </section>

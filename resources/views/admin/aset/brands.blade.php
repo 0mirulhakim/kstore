@@ -37,10 +37,24 @@
 
 @section('content')
     <!-- Container Section Start -->
+    <section class="content-header">
+        <!--section starts-->
+        <h1>Senarai Jenama</h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="{{ route('admin.dashboard') }}">
+                    <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#">Daftar Kod</a>
+            </li>
+            <li class="bg-active">Kod Jenama</li>
+        </ol>
+    </section>
 
     <div class="container my-3">
-        <h3 class="project">
-            Senarai Jenama</h3>
 
         <div class="container advfeatures">
             <div class="row">
@@ -49,7 +63,7 @@
                     <div class="card ">
 
                         <div class="card-header bg-primary text-white">
-                            <span class="float-right btn btn-sm btn-success"><a href="{{ route('brand:createBrand') }}">Daftar Jenama</a> </span>
+                            <span class="float-right btn btn-sm btn-warning"><a href="{{ route('brand:createBrand') }}">Daftar Jenama</a> </span>
                             <span class="float-right clickable">
                             </span>
                         </div>

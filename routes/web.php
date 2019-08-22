@@ -36,7 +36,9 @@ Route::group(['prefix' => 'admin', 'as'=> 'model:'], function () {
 
 Route::group(['prefix' => 'admin', 'as'=> 'toner:'], function () {
     Route::get('/toner', 'TonerController@index')->name('toner');
-    Route::get('/list{model}', 'TonerController@tonerList')->name('list');
+    Route::get('/list/{model}', 'TonerController@tonerList')->name('list');
+    Route::get('/createToner/{model}', 'TonerController@createToner')->name('createToner');
+    Route::post('/storeToner/{model}', 'TonerController@storeToner')->name('storeToner');
 
 });
 

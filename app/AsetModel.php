@@ -16,4 +16,8 @@ class AsetModel extends Model
     public function Brand(){
         return $this->belongsTo('App\Brand', 'aset_brand_id');
     }
+
+    public function Toner(){
+        return $this->hasMany('App\AsetModel');
+    }
 }

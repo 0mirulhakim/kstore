@@ -37,10 +37,25 @@
 
 @section('content')
     <!-- Container Section Start -->
+    <section class="content-header">
+        <!--section starts-->
+        <h1>Senarai Model Toner</h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="{{ route('admin.dashboard') }}">
+                    <i class="livicon" data-name="home" data-size="14" data-loop="true"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="#">Daftar Kod</a>
+            </li>
+            <li class="bg-active">Toner</li>
+        </ol>
+    </section>
+
 
     <div class="container my-3">
-        <h3 class="project">
-            Senarai Model Toner</h3>
 
         <div class="container advfeatures">
             <div class="row">
@@ -49,21 +64,22 @@
                     <div class="card ">
 
                         <div class="card-header bg-primary text-white">
-                            <span class="float-right btn btn-sm btn-success"><a href="#">Daftar Model Toner</a> </span>
+                            <i class="livicon" data-name="desktop" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i> Model Pencetak ???
+                            <span class="float-right btn btn-sm btn-warning"><a href="#">Daftar Model Toner</a> </span>
                             <span class="float-right clickable">
                             </span>
                         </div>
 
                         <div class="card-body">
                             <div class="portlet-body bg-white p-2">
+
                                 <div class="table-scrollable">
                                     <table class="table table-hover">
                                         <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Model Pencetak</th>
-                                            <th>Model Toner</th>
                                             <th>Kod Toner</th>
+                                            <th>Model Toner</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -72,8 +88,8 @@
                                             <tr>
                                                 <td>{{ $num }}</td>
                                                 <td>{{ $data->asetModel->name }}</td>
-                                                <td>{{ $data->model }}</td>
                                                 <td>{{ $data->code }}</td>
+                                                <td>{{ $data->model }}</td>
                                                 <td><a href="">
                                                         <i class=".align-self-center fa-2x far fa-edit"></i>
                                                     </a>
