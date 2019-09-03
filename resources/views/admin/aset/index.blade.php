@@ -74,20 +74,26 @@
                                 <th>No. Siri</th>
                                 <th>No. Daftar Aset</th>
                                 <th>Tarikh Terima</th>
+                                <th>&nbsp;</th>
                             </tr>
                             </thead>
                             <tbody>
+                            @php $num=1; @endphp
+                            @foreach($asets as $data)
                             <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Markotto</td>
-                                <td>
-                                    Markotto@test.com
+                                <td>{{ $num }}</td>
+                                <td>{{ $data->Brand->name }}</td>
+                                <td>{{ $data->AsetModel->name }}</td>
+                                <td>{{ $data->serial_no }}</td>
+                                <td>{{ $data->registration_no }}</td>
+                                <td>{{ $data->receive_date }}</td>
+                                <td><a href="">
+                                        <i class="livicon" data-name="list-ul" data-size="18" data-c="#1DA1F2" data-hc="#1DA1F2" data-toggle="tooltip" data-original-title="Lihat Maklumat Terperinci" data-loop="true"></i>
+                                    </a>
                                 </td>
-                                <td>Markotto</td>
                             </tr>
-
+                            @php $num++; @endphp
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -49,6 +49,9 @@
                                         <input type="text" id="form-text-input"
                                                name="model"
                                                class="form-control" placeholder="Masukkan Model Toner">
+                                        @if ($errors->has('model'))
+                                            <span class="text-danger">{{ $errors->first('model') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -60,6 +63,9 @@
                                         <input type="text" id="form-text-input"
                                                name="code"
                                                class="form-control" placeholder="Masukkan SKU NO">
+                                        @if ($errors->has('code'))
+                                            <span class="text-danger">{{ $errors->first('code') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

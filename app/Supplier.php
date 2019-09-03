@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Supplier extends Model
 {
     protected $table = 'aset_stor_suppliers';
-    protected $guarded  = [];
+    //protected $guarded  = [];
+    protected $fillable = ['name','address', 'email', 'phone'];
 
     public function Printers(){
         return $this->hasMany('Printer');

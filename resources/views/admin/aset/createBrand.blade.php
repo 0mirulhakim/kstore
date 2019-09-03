@@ -45,7 +45,9 @@
                                         <input type="text" id="form-text-input"
                                                name="name"
                                                class="form-control" placeholder="Masukkan Jenama Pencetak">
-
+                                        @if ($errors->has('name'))
+                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

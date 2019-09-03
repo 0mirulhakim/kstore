@@ -16,7 +16,7 @@ class CreateAsetStorSuppliersTable extends Migration
         Schema::create('aset_stor_suppliers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->multiLineString('address');
+            $table->text('address');
             $table->string('email');
             $table->string('phone');
             $table->timestamps();

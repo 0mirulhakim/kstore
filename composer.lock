@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e308e0a46ead1ab323eb1003d16c6bf",
+    "content-hash": "95f15f1cb9ec1e4353cb4c83dbec57be",
     "packages": [
         {
             "name": "anahkiasen/underscore-php",
@@ -1617,8 +1617,7 @@
             "dist": {
                 "type": "path",
                 "url": "./infyomlabs/laravel-generator",
-                "reference": "a5daa3e4233d83b3d1c6f30edd9abdd5795dbb18",
-                "shasum": null
+                "reference": "a5daa3e4233d83b3d1c6f30edd9abdd5795dbb18"
             },
             "require": {
                 "illuminate/support": "~5.0",

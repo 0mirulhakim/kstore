@@ -966,8 +966,8 @@
                             Kod Model Toner
                         </a>
                     </li>
-                    <li {!! (Request::is('admin/editor') ? 'class="active"' : '') !!}>
-                        <a href="{{ URL::to('admin/editor') }}">
+                    <li {!! (Request::is('admin/supplier') ? 'class="active"' : '') !!}>
+                        <a href="{{ URL::to('admin/supplier') }}">
                             <i class="fa fa-angle-double-right"></i>
                             Kod Pembekal
                         </a>

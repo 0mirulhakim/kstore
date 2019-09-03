@@ -21,6 +21,12 @@ Route::get('/history', 'guestController@formSejarah')->name('history');
 Route::get('/detailhistory', 'guestController@Sejarah')->name('detailhistory');
 Route::get('/hantarpermohonan', 'guestController@SubmitApplication')->name('hantarpermohonan');
 
+Route::group(['prefix' => 'admin', 'as'=> 'aset:'], function () {
+    Route::get('/registerprinter', 'AsetController@regAsetPrinter')->name('registerPrinter');
+    Route::get('/aset', 'AsetController@index')->name('aset');
+    Route::get('dynamic_dependent', 'AsetController@index');
+    Route::post('dynamic_dependent/fetch', 'AsetController@fetch')->name('dynamicdependent.fetch');
+});
 
 Route::group(['prefix' => 'admin', 'as'=> 'brand:'], function () {
     Route::get('/Brand', 'AsetController@Brand')->name('Brand');
@@ -42,9 +48,13 @@ Route::group(['prefix' => 'admin', 'as'=> 'toner:'], function () {
 
 });
 
+Route::group(['prefix' => 'admin', 'as'=> 'supplier:'], function () {
+    Route::get('/supplier', 'SupplierController@index')->name('supplier');
+    Route::get('/createSupplier', 'SupplierController@createSupplier')->name('createSupplier');
+    Route::post('/storeSupplier', 'SupplierController@storeSupplier')->name('storeSupplier');
+});
+
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/registerprinter', 'AsetController@formPrinter')->name('registerPrinter');
-    Route::get('/aset', 'AsetController@index')->name('aset');
     Route::get('/newApplication', 'TonerController@newAppl')->name('newApplication');
     Route::get('/verifyApplication', 'TonerController@verifyAppl')->name('verifyApplication');
     Route::get('/processApplication', 'TonerController@processAppl')->name('processApplication');

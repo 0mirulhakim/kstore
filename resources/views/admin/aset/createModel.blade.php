@@ -42,16 +42,21 @@
                                     <label class="col-md-3 control-label"
                                            for="form-text-input">Jenama</label>
                                     <div class="col-md-3">
-                                        <select style="width: auto;" name="aset_brand_id" id="aset_brand_id">
+                                        <select name="aset_brand_id" id="aset_brand_id" class="form-control select2">
                                             <option value="" readonly>Sila Pilih Jenama</option>
                                             @foreach($brands as $a)
                                                 <option value="{{ $a->id }}">{{ $a->name }}</option>
                                             @endforeach
+
                                         </select>
+                                        @if ($errors->has('aset_brand_id'))
+                                            <span class="text-danger">{{ $errors->first('aset_brand_id') }}</span>
+                                        @endif
 
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-group">
                                 <div class="row">
                                     <label class="col-md-3 control-label"
@@ -60,7 +65,9 @@
                                         <input type="text" id="form-text-input"
                                                name="name"
                                                class="form-control" placeholder="Masukkan Model Pencetak">
-
+                                        @if ($errors->has('name'))
+                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
