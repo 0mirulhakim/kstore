@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-e-Store
+e-Toner
 @parent
 @stop
 

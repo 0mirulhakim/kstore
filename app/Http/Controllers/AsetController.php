@@ -46,7 +46,7 @@ class AsetController extends Controller
             'aset_model_id.required' => 'Sila Masukkan Model', 'serial_no.required' => 'Sila Masukkan No.Siri Aset',
             'aset_status_id.required' => 'Sila Masukkan Status Aset', 'hr_staff_id.required' => 'Sila Masukkan Pegawai Bertanggungjawab']);
         Printer::create($data);
-    //dd($data);
+    dd($data);
         return $this->index()->with('message','Maklumat Telah Disimpan');
 
         //return redirect()->route('brand:Brand')->with('message','Maklumat Telah Disimpan: ');

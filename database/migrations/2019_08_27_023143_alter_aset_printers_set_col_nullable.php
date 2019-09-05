@@ -18,8 +18,10 @@ class AlterAsetPrintersSetColNullable extends Migration
             $table->date('receive_date')->nullable()->change();
             $table->unsignedInteger('aset_stor_supplier_id')->nullable()->change();
             $table->unsignedInteger('aset_procurement_ty_id')->nullable()->change();
+            $table->unsignedInteger('aset_status_id')->nullable()->change();
+            $table->unsignedInteger('hr_staff_id')->nullable()->change();
             $table->date('allocate_date')->nullable()->change();
-            $table->longText('remarks')->change();
+            $table->longText('remarks')->nullable()->change();
         });
     }
 
