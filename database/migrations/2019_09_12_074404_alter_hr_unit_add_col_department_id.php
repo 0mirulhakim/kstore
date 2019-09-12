@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHrPositionTable extends Migration
+class AlterHrUnitAddColDepartmentId extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateHrPositionTable extends Migration
      */
     public function up()
     {
-        Schema::create('hr_positions', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('gred');
-            $table->timestamps();
+        Schema::table('hr_units', function (Blueprint $table) {
+            $table->unsignedInteger('hr_department_id')->after('id');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateHrPositionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hr_positions');
+        Schema::create('hr_units', function (Blueprint $table) {
+            $table->dropColumn('hr_department_id');
+        });
     }
 }

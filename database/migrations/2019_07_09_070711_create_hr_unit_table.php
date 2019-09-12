@@ -13,7 +13,7 @@ class CreateHrUnitTable extends Migration
      */
     public function up()
     {
-        Schema::create('hr_unit', function (Blueprint $table) {
+        Schema::create('hr_units', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('abbr');
@@ -28,6 +28,6 @@ class CreateHrUnitTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hr_unit');
+        Schema::dropIfExists('hr_units');
     }
 }

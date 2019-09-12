@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-    Senarai Aset
+    Senarai Pegawai dan Kakitangan
     @parent
 @stop
 
@@ -32,7 +32,7 @@
     <section class="content-header">
 
         <!--section starts-->
-        <h1>Senarai Aset Pencetak</h1>
+        <h1>Senarai Pegawai dan Kakitangan</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="{{ route('admin.dashboard') }}">
@@ -41,9 +41,9 @@
                 </a>
             </li>
             <li>
-                <a href="#">Aset</a>
+                <a href="#">Sumber Manusia</a>
             </li>
-            <li class="active">Senarai Pencetak</li>
+            <li class="active">Senarai Pegawai dan Kakitangan</li>
         </ol>
     </section>
     <!--section ends-->
@@ -56,15 +56,9 @@
                     <div class="card-header bg-primary text-white clearfix  ">
                         <div class="float-right">
 
-                            <a href="{{ URL::to('admin/registerPrinter') }}" class="btn btn-sm btn-success"><h5>Daftar Pencetak</h5></a>
+                            <a href="{{ route('hr:createStaff') }}" class="btn btn-sm btn-success"><h5>Daftar Baru</h5></a>
                         </div>
-                        <div class="float-left">
 
-                            <div class="caption">
-                                <i class="livicon" data-name="camera" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                                TableTools
-                            </div>
-                        </div>
                     </div>
                     <div class="card-body table-responsive-lg table-responsive-sm table-responsive-md">
 
@@ -72,33 +66,29 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Brand</th>
-                                <th>Model</th>
-                                <th>No. Siri</th>
-                                <th>No. Daftar Aset</th>
-                                <th>Tarikh Terima</th>
-                                <th>&nbsp;</th>
+                                <th>Nama</th>
+                                <th>No. Kad Pengenalan</th>
+                                <th>Jawatan</th>
+                                <th>Bahagian</th>
+                                <th>Unit</th>
                                 <th>&nbsp;</th>
                             </tr>
                             </thead>
                             <tbody>
                             @php $num=1; @endphp
-                            @foreach($asets as $data)
-                            <tr>
-                                <td>{{ $num }}</td>
-                                <td>{{ $data->Brands->name }}</td>
-                                <td>{{ $data->Models->name }}</td>
-                                <td>{{ $data->serial_no }}</td>
-                                <td>{{ $data->registration_no }}</td>
-                                <td>{{ $data->receive_date }}</td>
-                                <td>
-                                    <a href="{{ route('aset:detailsPrinter',$data->id) }}" ><i class="livicon" data-name="list-ul" data-size="18" data-toggle="tooltip" data-original-title="Lihat Maklumat Terperinci" ></i></a>
-                                </td>
-                                <td>
-                                    <a href="#" ><i class="livicon" data-name="users" data-size="18" data-toggle="tooltip" data-original-title="Kemaskini Penempatan" ></i></a>
-                                </td>
-                            </tr>
-                            @php $num++; @endphp
+                            @foreach($staffs as $data)
+                                <tr>
+                                    <td>{{ $num }}</td>
+                                    <td>{{ $data->identification_card }}</td>
+                                    <td>{{ $data->name }}</td>
+                                    <td>{{ $data->Positions->name }}</td>
+                                    <td>{{ $data->Departments->name }}</td>
+                                    <td>{{ $data->Units->name }}</td>
+                                    <td>
+                                        <a href="{{ route('hr:editStaff',$data->id) }}" ><i class="livicon" data-name="pen" data-size="18" data-toggle="tooltip" data-original-title="Kemaskini Maklumat Staff" ></i></a>
+                                    </td>
+                                </tr>
+                                @php $num++; @endphp
                             @endforeach
                             </tbody>
                         </table>
@@ -112,7 +102,7 @@
              aria-labelledby="modalLabelfade" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-sini
+                    sini
                     <div class="modal-footer">
                         <button class="btn  btn-primary" data-dismiss="modal">Tutup</button>
                     </div>

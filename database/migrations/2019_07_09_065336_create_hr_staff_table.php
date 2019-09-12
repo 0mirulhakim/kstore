@@ -13,7 +13,7 @@ class CreateHrStaffTable extends Migration
      */
     public function up()
     {
-        Schema::create('hr_staff', function (Blueprint $table) {
+        Schema::create('hr_staffs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('identification_card');
             $table->string('name');
@@ -31,6 +31,6 @@ class CreateHrStaffTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hr_staff');
+        Schema::dropIfExists('hr_staffs');
     }
 }

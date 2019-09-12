@@ -869,8 +869,8 @@
                         Senarai Aset
                     </a>
                 </li>
-                <li {!! (Request::is('admin/registerprinter') ? 'class="active"' : '') !!}>
-                    <a href="{{ URL::to('admin/registerprinter') }}">
+                <li {!! (Request::is('admin/registerPrinter') ? 'class="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/registerPrinter') }}">
                         <i class="fa fa-angle-double-right"></i>
                         Daftar Aset Baru
                     </a>
@@ -878,7 +878,7 @@
                 <li {!! (Request::is('admin/editor') ? 'class="active"' : '') !!}>
                     <a href="{{ URL::to('admin/editor') }}">
                         <i class="fa fa-angle-double-right"></i>
-                       Kemaskini Aset
+                       Laporan Aset Pencetak
                     </a>
                 </li>
 
@@ -895,18 +895,20 @@
                 <span class="fa arrow"></span>
             </a>
             <ul class="sub-menu">
-                <li {!! (Request::is('admin/form_examples') ? 'class="active"' : '') !!}>
-                    <a href="{{ URL::to('admin/form_examples') }}">
+                <li {!! (Request::is('admin/staff') ? 'class="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/staff') }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        Senarai Kakitangan
+                    </a>
+                </li>
+
+                <li {!! (Request::is('admin/createStaff') ? 'class="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/createStaff') }}">
                         <i class="fa fa-angle-double-right"></i>
                         Daftar Kakitangan Baru
                     </a>
                 </li>
-                <li {!! (Request::is('admin/editor') ? 'class="active"' : '') !!}>
-                    <a href="{{ URL::to('admin/editor') }}">
-                        <i class="fa fa-angle-double-right"></i>
-                        Kemaskini Kakitangan
-                    </a>
-                </li>
+
 
             </ul>
         </li>

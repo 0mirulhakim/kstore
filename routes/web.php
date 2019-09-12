@@ -22,7 +22,10 @@ Route::get('/detailhistory', 'guestController@Sejarah')->name('detailhistory');
 Route::get('/hantarpermohonan', 'guestController@SubmitApplication')->name('hantarpermohonan');
 
 Route::group(['prefix' => 'admin', 'as'=> 'aset:'], function () {
-    Route::get('/registerprinter', 'AsetController@regAsetPrinter')->name('registerPrinter');
+    Route::get('/registerPrinter', 'AsetController@regAsetPrinter')->name('registerPrinter');
+    Route::post('/storePrinter', 'AsetController@storeAsetPrinter')->name('storePrinter');
+    Route::get('/detailsPrinter/{id}', 'AsetController@asetDetails')->name('detailsPrinter');
+
     Route::get('/aset', 'AsetController@index')->name('aset');
     Route::get('dynamic_dependent', 'AsetController@index');
     Route::post('dynamic_dependent/fetch', 'AsetController@fetch')->name('dynamicdependent.fetch');
@@ -52,6 +55,14 @@ Route::group(['prefix' => 'admin', 'as'=> 'supplier:'], function () {
     Route::get('/supplier', 'SupplierController@index')->name('supplier');
     Route::get('/createSupplier', 'SupplierController@createSupplier')->name('createSupplier');
     Route::post('/storeSupplier', 'SupplierController@storeSupplier')->name('storeSupplier');
+});
+
+Route::group(['prefix' => 'admin', 'as' => 'hr:'], function (){
+    Route::get('/staff', 'HrController@index')->name('staff');
+    Route::get('/editStaff/{id}', 'HrController@editStaff')->name('editStaff');
+    Route::get('/createStaff', 'HrController@createStaff')->name('createStaff');
+    Route::get('/json-units', 'HrController@units');
+    Route::post('/storeStaff', 'HrController@storeStaff')->name('storeStaff');
 });
 
 Route::group(['prefix' => 'admin'], function () {

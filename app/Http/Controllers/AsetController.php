@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\AsetStatus;
-use App\Models\Apps\PMR;
 use App\Printer;
 use App\AsetModel;
 use App\Brand;
@@ -21,10 +20,15 @@ class AsetController extends Controller
        // $staff = Staff::where('identification_card','=',$keyword)->get();
 
         $asets = Printer::orderBy('created_at','DESC')->latest()->paginate(config('settings.page_limit'));
-        $brands = Brand::all();
-        $asetModels = AsetModel::all();
+        //$brands = Brand::all();
+        //$asetModels = AsetModel::all();
         return view('admin.aset.index', compact('asets'));
 
+    }
+
+    public function asetDetails($id){
+        $details = Printer::WHERE('id',$id)->get();
+        return view('admin.aset.asetDetails', compact('details'));
     }
 
     public function regAsetPrinter()
@@ -41,12 +45,26 @@ class AsetController extends Controller
 
     public function storeAsetPrinter(Request $request){
 
-        $data = request()->validate(['aset_brand_id' => 'required', 'aset_model_id' => 'required', 'serial_no' => 'required',
-            'aset_status_id' => 'required', 'hr_staff_id' => 'required'],['aset_brand_id.required' => 'Sila masukkan Jenama',
-            'aset_model_id.required' => 'Sila Masukkan Model', 'serial_no.required' => 'Sila Masukkan No.Siri Aset',
-            'aset_status_id.required' => 'Sila Masukkan Status Aset', 'hr_staff_id.required' => 'Sila Masukkan Pegawai Bertanggungjawab']);
+        $data = request()->validate([
+            'aset_brand_id' => 'required',
+            'aset_model_id' => 'required',
+            'serial_no' => 'required',
+            'aset_status_id' => 'required',
+            'aset_stor_supplier_id' => 'required',
+            'aset_procurement_ty_id' => 'required',
+            'hr_staff_id' => 'required',
+            'registration_no' => 'nullable',
+            'receive_date' => 'nullable',
+            'location' => 'nullable',
+            'allocate_date' => 'nullable'],
+            ['aset_brand_id.required' => 'Sila masukkan Jenama',
+            'aset_model_id.required' => 'Sila Masukkan Model',
+                'serial_no.required' => 'Sila Masukkan No.Siri Aset',
+            'aset_status_id.required' => 'Sila Masukkan Status Aset',
+                'hr_staff_id.required' => 'Sila Masukkan Pegawai Bertanggungjawab']);
+
         Printer::create($data);
-    dd($data);
+    //dd($data);
         return $this->index()->with('message','Maklumat Telah Disimpan');
 
         //return redirect()->route('brand:Brand')->with('message','Maklumat Telah Disimpan: ');

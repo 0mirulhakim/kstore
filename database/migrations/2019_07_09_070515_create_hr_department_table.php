@@ -13,7 +13,7 @@ class CreateHrDepartmentTable extends Migration
      */
     public function up()
     {
-        Schema::create('hr_department', function (Blueprint $table) {
+        Schema::create('hr_departments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('abbr');
@@ -28,6 +28,6 @@ class CreateHrDepartmentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hr_department');
+        Schema::dropIfExists('hr_departments');
     }
 }

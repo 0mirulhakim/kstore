@@ -10,10 +10,13 @@
     <link href="{{ asset('vendors/iCheck/css/all.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('css/pages/form_layouts.css') }}" rel="stylesheet" type="text/css"/>
 
-    <link href="{{ asset('vendors/daterangepicker/css/daterangepicker.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('vendors/clockface/css/clockface.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('vendors/pickadate/css/default.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('vendors/pickadate/css/default.date.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('vendors/pickadate/css/default.time.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('vendors/airDatepicker/css/datepicker.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('vendors/flatpickr/css/flatpickr.min.css') }}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{{ asset('css/pages/adv_date_pickers.css') }}" rel="stylesheet" type="text/css"/>
 
     <link type="text/css" href="{{ asset('vendors/bootstrap-multiselect/css/bootstrap-multiselect.css') }}" rel="stylesheet"/>
     <link href="{{ asset('vendors/select2/css/select2.min.css') }}" rel="stylesheet"/>
@@ -45,7 +48,7 @@
             <div class="col-lg-12">
                 <div class="card ">
                     <div class="card-body border">
-                        <form action="{{ route('aset:registerPrinter') }}" method="POST" enctype="multipart/form-data" class="form-horizontal form-bordered">
+                        <form action="{{ route('aset:storePrinter') }}" method="POST" enctype="multipart/form-data" class="form-horizontal form-bordered">
                             @csrf
                             {{ method_field('post') }}
                             <div class="form-group">
@@ -109,7 +112,7 @@
                                     <label class="col-md-3 control-label"
                                            for="form-text-input">No. Daftar Aset</label>
                                     <div class="col-md-5">
-                                        <input type="text" id="form-text-input"
+                                        <input type="text" id="registration_no"
                                                name="registration_no"
                                                class="form-control" placeholder="Masukkan No. Daftar Aset">
                                         @if ($errors->has('registration_no'))
@@ -119,18 +122,28 @@
                                 </div>
                             </div>
 
+
                             <div class="form-group">
                                 <div class="row">
                                     <label class="col-md-3 control-label"
                                            for="form-text-input">Tarikh Terima</label>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="input-group">
-                                            <div class="input-group-append">
-                                      <span class="input-group-text"> <i class="livicon" data-name="calendar" data-size="16" data-c="#555555"
-                                                                         data-hc="#555555" data-loop="true"></i></span>
-                                            </div>
-                                            <input type="text" name="receive_date" class="form-control" id="rangepicker1"/>
-
+                                            <p class="flatpickr input-group" data-wrap="true" data-clickOpens="false">
+                                                <input class="form-control" name="receive_date" placeholder="Pilih Tarikh" data-input id="elements">
+                                                <span class="input-group-append add-on">
+                                            <a class="input-btn" data-toggle>
+                                                <span class="input-group-text remove_radius"> <i class="livicon" data-name="calendar" data-size="23"
+                                                                                                 data-c="#555555" data-hc="#555555" data-loop="true"></i></span>
+                                            </a>
+                                        </span>
+                                                <span class="input-group-append add-on">
+                                            <a class="input-btn" data-clear>
+                                                 <span class="input-group-text"><i class="livicon" data-name="remove" data-size="23"
+                                                                                   data-c="#555555" data-hc="#555555" data-loop="true"></i></span>
+                                            </a>
+                                        </span>
+                                            </p>
                                         </div>
 
                                         @if ($errors->has('receive_date'))
@@ -145,7 +158,7 @@
                                     <label class="col-md-3 control-label"
                                            for="form-text-input">Pembekal</label>
                                     <div class="col-md-3">
-                                        <select name="aset_stor_supplier_id" id="aset_model_id" class="form-control select2">
+                                        <select name="aset_stor_supplier_id" id="aset_stor_supplier_id" class="form-control select2">
                                             <option value="" readonly>Sila Pilih Pembekal</option>
                                             @foreach($suppliers as $a)
                                                 <option value="{{ $a->id }}">{{ $a->name }}</option>
@@ -163,7 +176,7 @@
                                     <label class="col-md-3 control-label"
                                            for="form-text-input">Jenis Perolehan</label>
                                     <div class="col-md-3">
-                                        <select name="aset_procurement_ty_id" id="aset_model_id" class="form-control select2">
+                                        <select name="aset_procurement_ty_id" id="aset_procurement_ty_id" class="form-control select2">
                                             <option value="" readonly>Sila Pilih Jenis Perolehan</option>
                                             @foreach($proc_types as $a)
                                                 <option value="{{ $a->id }}">{{ $a->name }}</option>
@@ -217,7 +230,7 @@
                                         @endif
                                     </div>
                                     <div class="col-md-5">
-                                        <input type="text" id="form-text-input"
+                                        <input type="text" id="location"
                                                name="location"
                                                class="form-control" placeholder="Masukkan Lokasi Penempatan">
                                         @if ($errors->has('location'))
@@ -231,14 +244,23 @@
                                 <div class="row">
                                     <label class="col-md-3 control-label"
                                            for="form-text-input">Tarikh Penempatan</label>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="input-group">
-                                            <div class="input-group-append">
-                                      <span class="input-group-text"> <i class="livicon" data-name="calendar" data-size="16" data-c="#555555"
-                                                                         data-hc="#555555" data-loop="true"></i></span>
-                                            </div>
-                                            <input type="text" name="allocate_date" class="form-control" id="rangepicker2"/>
-                                        </div>
+                                            <p class="flatpickr input-group" data-wrap="true" data-clickOpens="false">
+                                                <input class="form-control" name="allocate_date" placeholder="Pick date" data-input id="elements">
+                                                <span class="input-group-append add-on">
+                                            <a class="input-btn" data-toggle>
+                                                <span class="input-group-text remove_radius"> <i class="livicon" data-name="calendar" data-size="23"
+                                                                                                 data-c="#555555" data-hc="#555555" data-loop="true"></i></span>
+                                            </a>
+                                        </span>
+                                                <span class="input-group-append add-on">
+                                            <a class="input-btn" data-clear>
+                                                 <span class="input-group-text"><i class="livicon" data-name="remove" data-size="23"
+                                                                                   data-c="#555555" data-hc="#555555" data-loop="true"></i></span>
+                                            </a>
+                                        </span>
+                                            </p>
 
                                         @if ($errors->has('allocate_date'))
                                             <span class="text-danger">{{ $errors->first('allocate_date') }}</span>
@@ -253,7 +275,7 @@
                                         <button type="submit" class="btn btn-effect-ripple btn-primary">
                                             Simpan
                                         </button>
-                                        <span class="btn btn-effect-ripple btn-light"><a href="">Kembali</a> </span>
+                                        <span class="btn btn-effect-ripple btn-light"><a href="{{ route('aset:aset') }}">Kembali</a> </span>
 
                                     </div>
                                 </div>
@@ -281,9 +303,13 @@
     <script src="{{ asset('vendors/iCheck/js/icheck.js') }}"></script>
     <script src="{{ asset('js/pages/form_layouts.js') }}" type="text/javascript"></script>
 
-    <script src="{{ asset('vendors/moment/js/moment.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendors/daterangepicker/js/daterangepicker.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendors/pickadate/js/picker.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendors/pickadate/js/picker.date.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendors/pickadate/js/picker.time.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendors/flatpickr/js/flatpickr.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendors/airDatepicker/js/datepicker.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendors/airDatepicker/js/datepicker.en.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/pages/custom_datepicker.js') }}" type="text/javascript"></script>
 
     <script src="{{ asset('vendors/clockface/js/clockface.js') }}" type="text/javascript"></script>
     <script src="{{ asset('vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" type="text/javascript"></script>
