@@ -132,7 +132,9 @@
                                     <div class="col-md-3">
                                         <select name="hr_unit_id" id="unit" class="form-control select2">
                                             <option value="" readonly>Sila Pilih Unit</option>
-
+                                            @foreach($units as $key => $unit)
+                                                <option value="{{ $key }}">{{ $unit->name }}</option>
+                                            @endforeach
                                         </select>
                                         @if ($errors->has('unit'))
                                             <span class="text-danger">{{ $errors->first('unit') }}</span>

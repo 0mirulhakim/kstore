@@ -909,6 +909,13 @@
                     </a>
                 </li>
 
+                <li {!! (Request::is('admin/unit') ? 'class="active"' : '') !!}>
+                    <a href="{{ URL::to('admin/unit') }}">
+                        <i class="fa fa-angle-double-right"></i>
+                        Daftar Kod Unit
+                    </a>
+                </li>
+
 
             </ul>
         </li>

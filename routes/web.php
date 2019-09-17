@@ -61,8 +61,11 @@ Route::group(['prefix' => 'admin', 'as' => 'hr:'], function (){
     Route::get('/staff', 'HrController@index')->name('staff');
     Route::get('/editStaff/{id}', 'HrController@editStaff')->name('editStaff');
     Route::get('/createStaff', 'HrController@createStaff')->name('createStaff');
-    Route::get('/json-units', 'HrController@units');
+    Route::get('/unit', 'HrController@units')->name('unit');
+    Route::get('/createUnit', 'HrController@createUnit')->name('createUnit');
     Route::post('/storeStaff', 'HrController@storeStaff')->name('storeStaff');
+    Route::post('/storeUnit', 'HrController@storeUnit')->name('storeUnit');
+    Route::get('/json-units', 'HrController@units');
 });
 
 Route::group(['prefix' => 'admin'], function () {
