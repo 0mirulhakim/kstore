@@ -45,7 +45,7 @@
                 <form action="{{ route('application') }}" role="form" id="form_controls" method="GET">
                     <div class="form-group">
                         <label for="nokp">Nombor Kad Pengenalan</label>
-                        <input class="form-control" placeholder="Sila Masukkan Nombor Kad Pengenalan 12 Digit Tanpa '-'" id="nokp"></div>
+                        <input name="identification_card" class="form-control" placeholder="Sila Masukkan Nombor Kad Pengenalan 12 Digit Tanpa '-'" id="nokp"></div>
 
                     <div class="input-group-append">
                         <input type="submit" class="btn btn-3d btn-info " value="Hantar">

@@ -3,6 +3,7 @@
 
 use App\application;
 use App\Models\Blog;
+use App\Printer;
 use Illuminate\Support\MessageBag;
 use Sentinel;
 use Analytics;
@@ -14,6 +15,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Spatie\Analytics\Period;
 use File;
+use App\Staff;
 
 class guestController extends Controller
 {
@@ -23,9 +25,17 @@ class guestController extends Controller
 }
 
     Public function toner_appl(){
-        $keyword = request()->get('nokp');
+        $keyword = request()->get('identification_card');
 
-       // $staffs = Staff::where('identification_card','=',$keyword)->get();
+        $staffs = Staff::where('identification_card','=',$keyword)->get();
+        $staffCnt = $staffs->count();
+
+        if($staffCnt > 0){
+
+        foreach ($staffs as $staff)
+
+        $aset = Printer::where('hr_staff_id', '=', $staff->id)->get();
+
 
 //         //$id = $applications->id;
         //if($applications){
@@ -33,14 +43,18 @@ class guestController extends Controller
 //         ->orderBy('id', 'desc')
 //         ->get();
 //}
-        //dd($actions);
+       // dd($staffs);
 
 
 //        $applications = Action::join('applications as a', 'a.id','=','actions.application_id')
 //            ->where('a.nofail',$keyword)->orderBy('actions.id', 'desc')->get();
 //        $status = Status::all();
         //dd($applications);
-        return view('guest.application');//->with(compact('staffs'));
+
+            return view('guest.application')->with(compact('staffs', 'aset'));
+        }else
+            return redirect('guest')->with('error', 'Nombor Kad Pengenalan Tiada Dalam Rekod');
+
     }
 
     Public function formSemak(){

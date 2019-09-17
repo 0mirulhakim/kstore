@@ -35,183 +35,160 @@
     <link href="{{ asset('vendors/sweetalert/css/sweetalert2.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ asset('vendors/animate/animate.min.css') }}"/>
     <!--end of page level css-->
+
+    <link rel="stylesheet" href="{{ asset('css/pages/tab.css') }}" />
+    <style>
+        @media (min-width:320px) and (max-width:425px){
+            .popover.left{
+                width:100px !important;
+            }
+        }
+        .nav-tabs .nav-link:hover {
+            text-decoration: none;
+            background-color: #eee ;
+        }
+        .nav-pills .nav-link:hover {
+            text-decoration: none;
+            background-color: #eee ;
+        }
+        .btn-light:hover{
+            color: #fff;
+        }
+        .tab_panel .nav-link:active{
+            background-color: rgba(255, 255, 255, .23);
+        }
+    </style>
+
 @stop
 
 
 @section('content')
     <!-- Container Section Start -->
+    @foreach($staffs as $data)
     <div class="container my-3">
+
         <h3 class="project">
-            Suhana binti Mohd Bahari</h3>
-        <p class="text-justify">
-            Ketua Pembantu Tadbir, Unit PSM
-        </p>
+            {{ $data->name }}
+        </h3>
+        <h5 class="text-justify">
+            {{ $data->Positions->name }}, {{ $data->Units->name }}
+        </h5>
         <div class="container advfeatures">
-            <div class="row">
-                <div class="col-md-6 my-2">
-                    <div class="card ">
-                        <div class="card-header bg-primary text-white">
-                            <span>Senarai Aset Berdaftar</span>
-                            <span class="float-right clickable">
-                                <i class="fa fa-chevron-up"></i>
-                            </span>
-                        </div>
-                        <div class="card-body">
-                            <div class="portlet-body bg-white p-2">
-                                <div class="table-scrollable">
-                                    <table class="table table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Model</th>
-                                            <th>No. Daftar Aset</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>HP Laserjet Pro M402dn</td>
-                                            <td>PDTK/KP/15/01</td>
-                                            <td>
-                                                <span class="label label-sm bg-success text-white">Aktif</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>HP Color Laserjet CP5225</td>
-                                            <td>PDTK/KP/15/07</td>
-                                            <td>
-                                                <span class="label label-sm bg-danger text-white">Tidak Aktif</span>
-                                            </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
+                <div class="col-md-10 my-2">
+                    <div class="card-body">
+                        <div  id="accordion" role="tablist" aria-multiselectable="true">
+                            <div class="card ">
+                                <div class="card-header bg-success text-white" role="tab" id="headingOne">
+                                    <a data-toggle="collapse"  data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <span class=" color1_accordians text-white" data-toggle="tooltip" title="Klik Untuk Buka / Tutup">Borang Permohonan Toner</span>
+                                    </a>
+                                </div>
+                                <div id="collapseOne"  class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <form action="{{ route('hantarpermohonan') }}" role="form" id="form_controls" method="GET">
+                                            <div class="card-body">
+                                                <h5>1. HP Laserjet Pro M402dn</h5>
+                                                <div class="table-scrollable">
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                        <tr>
+                                                            <th class="col-md-6 my-2">Model</th>
+                                                            <th>Kuantiti Dimohon</th>
+                                                            <th>Baki Semasa</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td><div class="checkbox">
+                                                                    <label>
+                                                                        <input type="checkbox" class="custom-checkbox" value="">&nbsp;HP CF226A (26A)</label>
+                                                                </div></td>
+                                                            <td><div class="form-group">
+                                                                    <input class="form-control" id="qty">
+                                                                </div></td>
+                                                            <td><div class="form-group">
+                                                                    <input class="form-control" id="bal" value="10" disabled>
+                                                                </div></td>
+                                                        </tr>
+
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+
+
+                                                <div class="col-md-12  col-sm-12 col-12  col-lg-12 text-right">
+                                                    <button type="submit" class="btn btn-responsive btn-primary btn-sm" id="">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="card  my-3">
+                                <div class="card-header bg-primary text-white" role="tab" id="headingTwo">
+                                    <a data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                <span class="color1_accordians text-white" data-toggle="tooltip" title="Klik Untuk Buka / Tutup">
+                                                    Senarai Aset Berdaftar
+                                                </span>
+                                    </a>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">                                         <div class="card-body">
+                                        <div class="card-body">
+                                            <div class="portlet-body bg-white p-2">
+                                                <div class="table-scrollable">
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Model</th>
+                                                            <th>No. Daftar Aset</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                        </thead>
+                                                        @php $num=1; @endphp
+                                                        @foreach($aset as $data)
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>{{ $num }}</td>
+                                                                <td>{{ $data->Models->name }}</td>
+                                                                <td>{{ $data->registration_no }}</td>
+                                                                <td>
+                                                                    @if($data->aset_status_id === 1)
+                                                                        <span class="label label-sm bg-success text-white">{{ $data->AsetStatus->name }}</span>
+                                                                    @else
+                                                                        <span class="label label-sm bg-danger text-white">{{ $data->AsetStatus->name }}</span>
+                                                                    @endif
+
+
+                                                                </td>
+                                                            </tr>
+
+                                                            </tbody>
+                                                            @php $num++; @endphp
+                                                        @endforeach
+
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
+                        <!-- nav-tabs-custom -->
                     </div>
+
                 </div>
-                <div class="col-md-6 my-2">
-                    <div class="card ">
-                        <div class="card-header bg-success text-white">
-                            <span>Borang Permohonan Toner</span>
-                            <span class="float-right clickable">
-                                <i class="fa fa-chevron-up"></i>
-                            </span>
-                        </div>
-                        <form action="{{ route('hantarpermohonan') }}" role="form" id="form_controls" method="GET">
-                        <div class="card-body">
-                            <h5>1. HP Laserjet Pro M402dn</h5>
-                            <div class="table-scrollable">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th class="col-md-6 my-2">Model</th>
-                                        <th>Kuantiti Dimohon</th>
-                                        <th>Baki Semasa</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" class="custom-checkbox" value="">&nbsp;HP CF226A (26A)</label>
-                                            </div></td>
-                                        <td><div class="form-group">
-                                                 <input class="form-control" id="qty">
-                                            </div></td>
-                                        <td><div class="form-group">
-                                                <input class="form-control" id="bal" value="10" disabled>
-                                                        </div></td>
-                                    </tr>
-
-                                    </tbody>
-                                </table>
-
-                            </div>
-
-                            <h5>2. HP Color Laserjet CP5225</h5>
-                            <div class="table-scrollable">
-                                <table class="table table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th class="col-md-6 my-2">Model</th>
-                                        <th>Kuantiti Dimohon</th>
-                                        <th>Baki Semasa</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td><div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" class="custom-checkbox" value="">&nbsp;CE740A - Black (HP 307A)</label>
-                                            </div></td>
-                                        <td><div class="form-group">
-                                                <input class="form-control" id="qty">
-                                            </div></td>
-                                        <td><div class="form-group">
-                                                <input class="form-control" id="bal" value="5" disabled>
-                                            </div></td>
-                                    </tr>
-                                    <tr>
-
-                                        <td><div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" class="custom-checkbox" value="">&nbsp;CE741A - Magenta (HP 307A)</label>
-                                            </div></td>
-                                        <td><div class="form-group">
-                                                <input class="form-control" id="qty">
-                                            </div></td>
-                                        <td><div class="form-group">
-                                                <input class="form-control" id="bal" value="5" disabled>
-                                            </div></td>
-                                    </tr>
-                                    <tr>
-
-                                        <td><div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" class="custom-checkbox" value="">&nbsp;CE742A - Cyan (HP 307A)</label>
-                                            </div></td>
-                                        <td><div class="form-group">
-                                                <input class="form-control" id="qty">
-                                            </div></td>
-                                        <td><div class="form-group">
-                                                <input class="form-control" id="bal" value="5" disabled>
-                                            </div></td>
-                                    </tr>
-                                    <tr>
-                                        <td><div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" class="custom-checkbox" value="">&nbsp;CE743A - Yellow (HP 307A)</label>
-                                            </div></td>
-                                        <td><div class="form-group">
-                                                <input class="form-control" id="qty">
-                                            </div></td>
-                                        <td><div class="form-group">
-                                                <input class="form-control" id="bal" value="5" disabled>
-                                            </div></td>
-                                    </tr>
-
-                                    </tbody>
-                                </table>
-
-                            </div>
-                            <div class="col-md-12  col-sm-12 col-12  col-lg-12 text-right">
-                                <button type="submit" class="btn btn-responsive btn-primary btn-sm" id="">Submit</button>
-                            </div>
-                        </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
 
     </div>
-
 
         <!-- Related Section Start -->
     </div>
+
     <!-- Related Setion End -->
+    @endforeach
 @stop
 
 
@@ -225,5 +202,7 @@
     <script src="{{ asset('js/pages/custom_buttons.js') }}"></script>
     <script src="{{ asset('vendors/sweetalert/js/sweetalert2.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/pages/custom_sweetalert.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('js/pages/tabs_accordions.js') }}" type="text/javascript"></script>
     <!--page level js ends-->
 @stop
