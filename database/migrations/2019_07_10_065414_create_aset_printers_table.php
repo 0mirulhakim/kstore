@@ -27,6 +27,7 @@ class CreateAsetPrintersTable extends Migration
             $table->string('location');
             $table->date('allocate_date');
             $table->longText('remarks');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

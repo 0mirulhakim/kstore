@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStorStsApplicationsTable extends Migration
+class CreateStorReceiptTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateStorStsApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stor_sts_applications', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('stor_receipt_types', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name');
             $table->integer('user_id');
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateStorStsApplicationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stor_sts_applications');
+        Schema::dropIfExists('stor_receipt_types');
     }
 }

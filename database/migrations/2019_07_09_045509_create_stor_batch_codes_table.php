@@ -16,6 +16,7 @@ class CreateStorBatchCodesTable extends Migration
         Schema::create('stor_batch_codes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

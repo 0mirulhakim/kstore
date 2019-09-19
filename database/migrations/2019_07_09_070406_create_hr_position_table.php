@@ -17,6 +17,7 @@ class CreateHrPositionTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('gred');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

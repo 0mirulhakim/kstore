@@ -19,6 +19,7 @@ class CreateAsetStorSuppliersTable extends Migration
             $table->text('address');
             $table->string('email');
             $table->string('phone');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

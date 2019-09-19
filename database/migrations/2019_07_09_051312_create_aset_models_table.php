@@ -17,6 +17,7 @@ class CreateAsetModelsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('aset_brand_id');
             $table->string('name');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

@@ -18,6 +18,7 @@ class CreateStorTonersTable extends Migration
             $table->unsignedInteger('aset_model_id');
             $table->string('model');
             $table->string('code');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

@@ -16,6 +16,7 @@ class CreateAsetBrandsTable extends Migration
         Schema::create('aset_brands', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

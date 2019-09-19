@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStorStsApplicationsTable extends Migration
+class AlterStorTonersAddColCatalogCode extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateStorStsApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('stor_sts_applications', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->integer('user_id');
-            $table->timestamps();
+        Schema::table('stor_toners', function (Blueprint $table) {
+            $table->string('catalog_code')->nullable()->after('code');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateStorStsApplicationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stor_sts_applications');
+        Schema::create('stor_toners', function (Blueprint $table) {
+            $table->dropColumn('catalog_code');
+        });
     }
 }

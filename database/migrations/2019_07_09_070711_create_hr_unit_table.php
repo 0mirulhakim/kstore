@@ -17,6 +17,7 @@ class CreateHrUnitTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('abbr');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

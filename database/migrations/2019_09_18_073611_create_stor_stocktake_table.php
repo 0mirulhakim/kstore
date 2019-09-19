@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAsetPrinterAllocateHistoriesTable extends Migration
+class CreateStorStocktakeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateAsetPrinterAllocateHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('aset_printer_allocate_histories', function (Blueprint $table) {
+        Schema::create('stor_stocktake', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('aset_printer_id');
-            $table->date('allocate_date_end');
-            $table->unsignedInteger('hr_staff_id');
-            $table->string('location');
+            $table->unsignedInteger('stor_toner_application_id');
+            $table->string('bpsi_no');
+            $table->date('process_date');
+            $table->date('approve_date')->nullable();
+            $table->integer('quantity');
+            $table->string('stor_receipt_item_btb_no');
             $table->integer('user_id');
             $table->timestamps();
         });
@@ -31,6 +33,6 @@ class CreateAsetPrinterAllocateHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aset_printer_allocate_histories');
+        Schema::dropIfExists('stor_stocktake');
     }
 }
