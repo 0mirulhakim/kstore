@@ -82,7 +82,7 @@
                                     <td>{{ $data->identification_card }}</td>
                                     <td>{{ $data->name }}</td>
                                     <td>{{ $data->Positions->name }}</td>
-                                    <td>{{ $data->Departments->name }}</td>
+                                    <td>{{ $data->Units->Department->name }}</td>
                                     <td>{{ $data->Units->name }}</td>
                                     <td>
                                         <a href="{{ route('hr:editStaff',$data->id) }}" ><i class="livicon" data-name="pen" data-size="18" data-toggle="tooltip" data-original-title="Kemaskini Maklumat Staff" ></i></a>

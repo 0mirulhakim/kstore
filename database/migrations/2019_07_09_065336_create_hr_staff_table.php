@@ -18,7 +18,6 @@ class CreateHrStaffTable extends Migration
             $table->string('identification_card');
             $table->string('name');
             $table->unsignedInteger('hr_position_id');
-            $table->unsignedInteger('hr_department_id');
             $table->unsignedInteger('hr_unit_id');
             $table->integer('user_id');
             $table->timestamps();
