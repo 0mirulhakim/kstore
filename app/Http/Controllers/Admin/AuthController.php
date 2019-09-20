@@ -281,6 +281,8 @@ class AuthController extends JoshController
         return redirect('admin/signin')->with('success', 'You have successfully logged out!');
     }
 
+
+
     /**
      * Account sign up form processing for register2 page
      *
