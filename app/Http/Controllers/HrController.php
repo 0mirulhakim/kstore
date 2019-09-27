@@ -14,7 +14,7 @@ use App\Unit;
 class HrController extends Controller
 {
     public function index(){
-        $staffs = Staff::orderBy('created_at','DESC')->latest()->paginate(config('settings.page_limit'));
+        $staffs = Staff::orderBy('created_at','DESC')->latest()->get();
         return view('admin.hr.index', compact('staffs'));
     }
 

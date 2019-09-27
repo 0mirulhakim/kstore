@@ -13,6 +13,9 @@ include_once 'web_builder.php';
 
 Route::pattern('slug', '[a-z0-9- _]+');
 
+Route::get('myform',array('as'=>'myform','uses'=>'HomeController@myform'));
+Route::get('myform/ajax/{id}',array('as'=>'myform.ajax','uses'=>'HomeController@myformAjax'));
+
 Route::get('/guest', 'guestController@showHome')->name('guest');
 Route::get('/application', 'guestController@toner_appl')->name('application');
 Route::get('/semakan', 'guestController@formSemak')->name('semak-status');
