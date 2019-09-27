@@ -14,6 +14,7 @@ class HomeController extends Controller
 
     {
 
+<<<<<<< HEAD
         /*  $states = DB::table("demo_state")->pluck("name","id");
 
           return view('myform',compact('states'));*/
@@ -49,6 +50,36 @@ class HomeController extends Controller
             ->pluck("name","id");
 
         return json_encode($units);
+=======
+        $states = DB::table("demo_state")->pluck("name","id");
+
+        return view('myform',compact('states'));
+
+    }
+
+
+    /**
+
+     * Get Ajax Request and restun Data
+
+     *
+
+     * @return \Illuminate\Http\Response
+
+     */
+
+    public function myformAjax($id)
+
+    {
+
+        $cities = DB::table("demo_cities")
+
+            ->where("state_id",$id)
+
+            ->pluck("name","id");
+
+        return json_encode($cities);
+>>>>>>> 5ff3ba89a601acd470c960025a4c18899385c181
 
     }
 }
