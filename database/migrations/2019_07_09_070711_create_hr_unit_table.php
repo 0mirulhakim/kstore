@@ -16,7 +16,7 @@ class CreateHrUnitTable extends Migration
         Schema::create('hr_units', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('abbr');
+            $table->string('abbr')->nullable();
             $table->integer('user_id');
             $table->timestamps();
         });

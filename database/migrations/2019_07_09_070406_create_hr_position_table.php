@@ -16,7 +16,7 @@ class CreateHrPositionTable extends Migration
         Schema::create('hr_positions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('gred');
+            $table->string('gred')->nullable();
             $table->integer('user_id');
             $table->timestamps();
         });

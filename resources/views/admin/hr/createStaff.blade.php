@@ -24,9 +24,6 @@
     <link href="{{ asset('vendors/selectize/css/selectize.css') }}" rel="stylesheet"/>
     <link href="{{ asset('vendors/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet"/>
 
-    <link rel="stylesheet" href="http://www.codermen.com/css/bootstrap.min.css">
-    <script src="http://www.codermen.com/js/jquery.js"></script>
-
 @stop
 @section('content')
 
@@ -107,15 +104,17 @@
                                 </div>
                             </div>
 
+
+
                             <div class="form-group">
                                 <div class="row">
                                     <label class="col-md-3 control-label"
                                            for="form-text-input">Bahagian</label>
                                     <div class="col-md-3">
                                         <select name="hr_department_id" id="department" class="form-control select2">
-                                            <option value="" readonly>Sila Pilih Bahagian</option>
-                                            @foreach($departments as $key => $department)
-                                                <option value="{{ $key }}">{{ $department->name }}</option>
+                                            <option value="99" readonly>Sila Pilih Bahagian</option>
+                                            @foreach($departments as $key => $value)
+                                                <option value="{{ $key }}">{{ $value }}</option>
                                             @endforeach
                                         </select>
                                         @if ($errors->has('department'))
@@ -131,10 +130,7 @@
                                            for="form-text-input">Unit</label>
                                     <div class="col-md-3">
                                         <select name="hr_unit_id" id="unit" class="form-control select2">
-                                            <option value="" readonly>Sila Pilih Unit</option>
-                                            @foreach($units as $key => $unit)
-                                                <option value="{{ $key }}">{{ $unit->name }}</option>
-                                            @endforeach
+
                                         </select>
                                         @if ($errors->has('unit'))
                                             <span class="text-danger">{{ $errors->first('unit') }}</span>
@@ -143,8 +139,9 @@
                                 </div>
                             </div>
 
+                            <input type="hidden" id="gred" name="gred" value="" class="form-control" >
 
-                                <div class="form-group form-actions">
+                            <div class="form-group form-actions">
                                     <div class="row">
                                         <div class="col-md-9 col-md-offset-3 ml-auto">
                                             <button type="submit" class="btn btn-effect-ripple btn-primary">
@@ -178,18 +175,6 @@
     <script src="{{ asset('vendors/iCheck/js/icheck.js') }}"></script>
     <script src="{{ asset('js/pages/form_layouts.js') }}" type="text/javascript"></script>
 
-    <script src="{{ asset('vendors/pickadate/js/picker.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendors/pickadate/js/picker.date.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendors/pickadate/js/picker.time.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendors/flatpickr/js/flatpickr.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendors/airDatepicker/js/datepicker.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendors/airDatepicker/js/datepicker.en.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/pages/custom_datepicker.js') }}" type="text/javascript"></script>
-
-    <script src="{{ asset('vendors/clockface/js/clockface.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}" type="text/javascript"></script>
-
-    <script src="{{ asset('js/pages/datepicker.js') }}" type="text/javascript"></script>
 
     <script language="javascript" type="text/javascript" src="{{ asset('vendors/select2/js/select2.js') }}"></script>
     <script language="javascript" type="text/javascript" src="{{ asset('vendors/select2/js/select2.js') }}"></script>
@@ -205,32 +190,33 @@
     <script language="javascript" type="text/javascript" src="{{ asset('vendors/card/js/jquery.card.js') }}"></script>
     <script language="javascript" type="text/javascript" src="{{ asset('js/pages/custom_elements.js') }}"></script>
 
+    <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
 
     <script type="text/javascript">
-        $('#department').change(function(){
-            var departmentID = $(this).val();
-            if(departmentID){
-                $.ajax({
-                    type:"GET",
-                    url:"{{url('json-units')}}?hr_department_id="+departmentID,
-                    success:function(res){
-                        if(res){
-                            $("#unit").empty();
-                            $("#unit").append('<option>Select</option>');
-                            $.each(res,function(key,value){
-                                $("#unit").append('<option value="'+key+'">'+value+'</option>');
+
+        $(document).ready(function() {
+
+            $('select[name="hr_department_id"]').on('change', function() {
+                var deptID = $(this).val();
+                if(deptID) {
+                    $.ajax({
+                        url: 'http://k-store.pdtk/createStaff/ajax/'+deptID,
+                        type: "GET",
+                        dataType: "json",
+                        success:function(data) {
+
+                            $('select[name="hr_unit_id"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="hr_unit_id"]').append('<option value="'+ key +'">'+ value +'</option>');
                             });
-
-                        }else{
-                            $("#unit").empty();
                         }
-                    }
-                });
-            }else{
-                $("#unit").empty();
-
-            }
+                    });
+                }else{
+                    $('select[name="hr_unit_id"]').empty();
+                }
+            });
         });
+
     </script>
 
 @stop

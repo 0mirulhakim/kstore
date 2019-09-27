@@ -13,6 +13,9 @@ include_once 'web_builder.php';
 
 Route::pattern('slug', '[a-z0-9- _]+');
 
+Route::get('myform',array('as'=>'myform','uses'=>'HomeController@myform'));
+Route::get('createStaff/ajax/{id}',array('as'=>'createStaff.ajax','uses'=>'HomeController@createStaffAjax'));
+
 Route::get('/guest', 'guestController@showHome')->name('guest');
 Route::get('/application', 'guestController@toner_appl')->name('application');
 Route::get('/semakan', 'guestController@formSemak')->name('semak-status');
@@ -23,6 +26,7 @@ Route::get('/hantarpermohonan', 'guestController@SubmitApplication')->name('hant
 
 Route::group(['prefix' => 'admin', 'as'=> 'aset:'], function () {
     Route::get('/registerPrinter', 'AsetController@regAsetPrinter')->name('registerPrinter');
+    Route::get('registerPrinter/ajax/{id}',array('as'=>'registerPrinter.ajax','uses'=>'AsetController@regAsetPrinterAjax'));
     Route::post('/storePrinter', 'AsetController@storeAsetPrinter')->name('storePrinter');
     Route::get('/detailsPrinter/{id}', 'AsetController@asetDetails')->name('detailsPrinter');
 
@@ -65,7 +69,7 @@ Route::group(['prefix' => 'admin', 'as' => 'hr:'], function (){
     Route::get('/createUnit', 'HrController@createUnit')->name('createUnit');
     Route::post('/storeStaff', 'HrController@storeStaff')->name('storeStaff');
     Route::post('/storeUnit', 'HrController@storeUnit')->name('storeUnit');
-    Route::get('/json-units', 'HrController@units');
+    Route::get('createStaff/ajax/{id}',array('as'=>'createStaff.ajax','uses'=>'HrController@createStaffAjax'));
 });
 
 Route::group(['prefix' => 'admin'], function () {

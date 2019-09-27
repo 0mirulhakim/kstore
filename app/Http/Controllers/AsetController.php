@@ -10,6 +10,7 @@ use App\Procurement_type;
 use App\Staff;
 use App\Supplier;
 use Illuminate\Http\Request;
+use DB;
 
 class AsetController extends Controller
 {
@@ -33,14 +34,22 @@ class AsetController extends Controller
 
     public function regAsetPrinter()
     {
-       // $brands = Brand::all();
-        $brands = Brand::all();
+        $brands = DB::table("aset_brands")->pluck("name", "id");
+        //$brands = Brand::all();
         $models = AsetModel::all();
         $suppliers = Supplier::all();
         $proc_types = Procurement_type::all();
         $asetStatus = AsetStatus::all();
         $staffs = Staff::all();
         return view('admin.aset.createAsetPrinter', compact('brands', 'models', 'suppliers', 'proc_types', 'asetStatus', 'staffs'));
+    }
+
+    public function regAsetPrinterAjax($id){
+        $models = DB::table("aset_models")
+            ->where("aset_brand_id", $id)
+            ->pluck("name","id");
+        return json_encode($models);
+
     }
 
     public function storeAsetPrinter(Request $request){

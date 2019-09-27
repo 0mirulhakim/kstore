@@ -10,11 +10,12 @@ use App\Staff;
 use App\Department;
 use App\Position;
 use App\Unit;
+use DB;
 
 class HrController extends Controller
 {
     public function index(){
-        $staffs = Staff::orderBy('created_at','DESC')->latest()->paginate(config('settings.page_limit'));
+        $staffs = Staff::orderBy('created_at','DESC')->latest()->get();
         return view('admin.hr.index', compact('staffs'));
     }
 
@@ -31,18 +32,46 @@ class HrController extends Controller
     }*/
 
     public function createStaff(){
+
         $positions = Position::all();
-        $departments = Department::all();
-        $units = Unit::all();
+        //$departments = Department::all();
+        //$units= Unit::all();
+
+        $departments = DB::table("hr_departments")->pluck("name", "id");
+        $units = Unit::orderBy('hr_department_id', 'asc')->get();
         return view('admin.hr.createStaff', compact('positions','departments', 'units'));
+    }
+
+    public function createStaffAjax($id){
+        $units = DB::table("hr_units")
+            ->where("hr_department_id", $id)
+            ->pluck("name","id");
+        return json_encode($units);
+
     }
 
     public function editStaff($staffs){
         return view('admin.hr.index', compact('staffs'));
     }
 
-    public function storeStaff($staffs){
-        return view('admin.hr.index', compact('staffs'));
+    public function storeStaff(Request $request){
+        $data = request()->validate([
+            'identification_card' => 'required|unique:hr_staffs,identification_card',
+            'name' => 'required',
+            'hr_unit_id' => 'required',
+            'hr_position_id' => 'required'
+        ],
+            [
+                'identification_card.required' => 'Sila Masukkan Kad Pengenalan',
+                'identification_card.unique' => 'No. Kad Pengenalan Telah Wujud',
+                'name.required' => 'Sila Masukkan Nama',
+                'hr_unit_id.required' => 'Sila Pilih Unit',
+                'hr_position_id.required' => 'Sila Pilih Jawatan'
+            ]);
+        Staff::create($data);
+        //dd($data);
+
+        return $this->index();
     }
 
     public function createUnit(){
