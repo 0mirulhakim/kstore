@@ -20,7 +20,7 @@ class AsetController extends Controller
 
        // $staff = Staff::where('identification_card','=',$keyword)->get();
 
-        $asets = Printer::orderBy('created_at','DESC')->latest()->paginate(config('settings.page_limit'));
+        $asets = Printer::orderBy('created_at','DESC')->latest()->get();
         //$brands = Brand::all();
         //$asetModels = AsetModel::all();
         return view('admin.aset.index', compact('asets'));

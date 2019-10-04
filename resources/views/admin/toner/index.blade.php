@@ -8,35 +8,27 @@
 
 {{-- page level styles --}}
 @section('header_styles')
-    <!--page level css starts-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/frontend/portfolio.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/animate/animate.min.css') }}"/>
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/owl_carousel/css/owl.carousel.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/owl_carousel/css/owl.theme.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/css/buttons.bootstrap4.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/css/colReorder.bootstrap4.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/css/dataTables.bootstrap4.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/css/rowReorder.bootstrap4.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/datatables/css/scroller.bootstrap4.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pages/tables.css') }}" />
 
-    <!--button-->
-    <link href="{{ asset('vendors/iCheck/css/all.css') }}" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('css/buttons.css') }}"/>
+    <link href="{{ asset('css/pages/advmodals.css') }}" rel="stylesheet"/>
 
-    <!--table-->
-    <link href="{{ asset('css/pages/tables.css') }}" rel="stylesheet" type="text/css" />
+    <style>
 
+        #table1_filter{
+            margin-bottom: 10px;
+        }
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/bootstrap-tagsinput/css/bootstrap-tagsinput.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/frontend/panel.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/frontend/features.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/frontend/timeline.css') }}">
-    <link type="text/css" rel="stylesheet" href="{{ asset('vendors/switchery/css/switchery.css') }}" />
-    <link type="text/css" rel="stylesheet" href="{{ asset('vendors/bootstrap-switch/css/bootstrap-switch.css') }}">
-
-    <link href="{{ asset('vendors/iCheck/css/all.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('css/pages/form_layouts.css') }}" rel="stylesheet" type="text/css"/>
-    <!--end of page level css-->
+    </style>
 @stop
 
-
+{{-- Page content --}}
 @section('content')
-    <!-- Container Section Start -->
+
     <section class="content-header">
         <!--section starts-->
         <h1>Senarai Model Toner</h1>
@@ -53,78 +45,80 @@
             <li class="bg-active">Senarai Toner</li>
         </ol>
     </section>
+    <!--section ends-->
+    <section class="content pl-3 pr-3">
 
+        <div class="row">
+            <div class="col-lg-12 my-3">
+                <div class="card filterable" style="overflow:auto;">
+                    <div class="card-header bg-primary text-white">
+                                <span>
+                                     <i class="livicon" data-name="responsive" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                                    Senarai Toner
+                                </span>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive-lg table-responsive-sm table-responsive-md">
+                            <table class="table table-striped table-bordered" id="table2"
+                                   width="100%">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Model Pencetak</th>
+                                    <th>Kod Toner / SKU No</th>
+                                    <th>Model Toner</th>
+                                    <th>Edit</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @php $num=1; @endphp
+                                @foreach($toners as $data)
+                                    <tr>
+                                        <td>{{ $num }}</td>
+                                        <td>{{ $data->asetModel->name }}</td>
+                                        <td>{{ $data->code }}</td>
+                                        <td>{{ $data->model }}</td>
+                                        <td><a href="">
+                                                <i class=".align-self-center fa-2x far fa-edit"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
 
-    <div class="container my-3">
-
-        <div class="container advfeatures">
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <div class="card ">
-
-                        <div class="card-header bg-primary text-white">
-                            <i class="livicon" data-name="desktop" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i> Semua Toner
-                            <span class="float-right clickable">
-                            </span>
-                        </div>
-
-                        <div class="card-body">
-                            <div class="portlet-body bg-white p-2">
-
-                                <div class="table-scrollable">
-                                    <table class="table table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Model Pencetak</th>
-                                            <th>Kod Toner / SKU No</th>
-                                            <th>Model Toner</th>
-                                            <th>Edit</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @php $num=1; @endphp
-                                        @foreach($toners as $data)
-                                            <tr>
-                                                <td>{{ $num }}</td>
-                                                <td>{{ $data->asetModel->name }}</td>
-                                                <td>{{ $data->code }}</td>
-                                                <td>{{ $data->model }}</td>
-                                                <td><a href="">
-                                                        <i class=".align-self-center fa-2x far fa-edit"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-
-                                            @php $num++; @endphp
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                                    @php $num++; @endphp
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
 
+    </section>
+    <!-- content -->
 
-        <!-- Related Section Start -->
+@stop
 
-        <!-- Related Setion End -->
-    @stop
+{{-- page level scripts --}}
+@section('footer_scripts')
+
+    <script type="text/javascript" src="{{ asset('vendors/datatables/js/jquery.dataTables.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('vendors/jeditable/js/jquery.jeditable.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('vendors/datatables/js/dataTables.bootstrap4.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('vendors/datatables/js/dataTables.buttons.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('vendors/datatables/js/dataTables.colReorder.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('vendors/datatables/js/dataTables.responsive.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('vendors/datatables/js/dataTables.rowReorder.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('vendors/datatables/js/buttons.colVis.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('vendors/datatables/js/buttons.html5.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('vendors/datatables/js/buttons.print.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('vendors/datatables/js/buttons.bootstrap4.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('vendors/datatables/js/pdfmake.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('vendors/datatables/js/vfs_fonts.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('vendors/datatables/js/dataTables.scroller.js') }}" ></script>
+    <script type="text/javascript" src="{{ asset('js/pages/table-advanced.js') }}" ></script>
 
 
-    {{-- page level scripts --}}
-    @section('footer_scripts')
-        <!-- page level js starts-->
-            <script type="text/javascript" src="{{ asset('vendors/owl_carousel/js/owl.carousel.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('vendors/wow/js/wow.min.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('js/frontend/carousel.js') }}"></script>
-            <script type="text/javascript" src="{{ asset('vendors/countUp.js/js/countUp.js') }}"></script>
-            <script src="{{ asset('js/pages/custom_buttons.js') }}"></script>
-            <!--page level js ends-->
+
+
 @stop
