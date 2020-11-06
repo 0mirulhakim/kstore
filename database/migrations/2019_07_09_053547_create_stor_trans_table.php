@@ -24,7 +24,7 @@ class CreateStorTransTable extends Migration
             $table->decimal('price',9,2);
             $table->unsignedInteger('user_id');
             $table->longText('remarks');
-            $table->integer('user_id');
+           // $table->integer('user_id');
             $table->timestamps();
         });
     }
