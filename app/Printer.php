@@ -52,4 +52,8 @@ class Printer extends Model
     public  function Staffs(){
         return $this->belongsTo('App\Staff', 'hr_staff_id');
     }
+    
+    public function Histories(){
+        return $this->hasMany('App\History', 'id');
+    }
 }

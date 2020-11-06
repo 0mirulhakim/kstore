@@ -20,4 +20,5 @@ class Staff extends Model
     public function Units(){
         return $this->belongsTo('App\Unit', 'hr_unit_id');
     }
+    
 }
