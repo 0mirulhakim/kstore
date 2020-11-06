@@ -1,4 +1,16 @@
 <?php
+use Illuminate\Support\Facades\Route;
+use App\AsetStatus;
+use App\Printer;
+use App\AsetModel;
+use App\Brand;
+use App\Procurement_type;
+use App\Staff;
+use App\History;
+
+use App\Models\Datatable;
+use Yajra\DataTables\DataTables;
+use App\Supplier;
 include_once 'web_builder.php';
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +38,18 @@ Route::get('/hantarpermohonan', 'guestController@SubmitApplication')->name('hant
 
 Route::group(['prefix' => 'admin', 'as'=> 'aset:'], function () {
     Route::get('/registerPrinter', 'AsetController@regAsetPrinter')->name('registerPrinter');
+    Route::get('/KemaskiniAset/{id}', 'AsetController@KemaskiniAset')->name('KemaskiniAset');
+    
+    Route::get('/getModelss/{id}', 'AsetController@getModelss');
     Route::get('registerPrinter/ajax/{id}',array('as'=>'registerPrinter.ajax','uses'=>'AsetController@regAsetPrinterAjax'));
+    Route::get('/getModel/{id}', 'AsetController@getModel');
     Route::post('/storePrinter', 'AsetController@storeAsetPrinter')->name('storePrinter');
+    Route::post('/editPenempatan', 'AsetController@editPenempatan')->name('editPenempatan');
+    Route::post('/editAset', 'AsetController@editAset')->name('editAset');
     Route::get('/detailsPrinter/{id}', 'AsetController@asetDetails')->name('detailsPrinter');
-
+    Route::get('/KemaskiniPenempatan/{id}', 'AsetController@KemaskiniPenempatan')->name('KemaskiniPenempatan');
+    //Route::get('/laporanfilter', 'AsetController@laporanfilter')->name('filter');
+    Route::get('/editor', 'AsetController@laporanindex')->name('laporan');
     Route::get('/aset', 'AsetController@index')->name('aset');
     Route::get('dynamic_dependent', 'AsetController@index');
     Route::post('dynamic_dependent/fetch', 'AsetController@fetch')->name('dynamicdependent.fetch');
@@ -261,6 +281,7 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin', 'middleware' => 'admin',
     # editable datatables
     Route::get('editable_datatables', 'EditableDataTablesController@index')->name('index');
     Route::get('editable_datatables/data', 'EditableDataTablesController@data')->name('editable_datatables.data');
+    Route::get('editable_datatables1/data', 'EditableDataTablesController@data1')->name('editable_datatables.data1');
     Route::post('editable_datatables/create', 'EditableDataTablesController@store')->name('store');
     Route::post('editable_datatables/{id}/update', 'EditableDataTablesController@update')->name('update');
     Route::get('editable_datatables/{id}/delete', 'EditableDataTablesController@destroy')->name('editable_datatables.delete');
@@ -349,3 +370,74 @@ Route::get('news/{news}', 'NewsController@show')->name('news.show');
 
 Route::get('{name?}', 'FrontEndController@showFrontEndView');
 # End of frontend views
+//Route::get('/KemaskiniAset/{id}', [ 'as' => 'admin.aset.KemaskiniAset', 'uses' => 'AsetController@KemaskiniAset']);
+Route::get('/editorfilter', function () {
+    return view("editorfilter");
+});
+Route::resource('customsearch', 'CustomSearchController');
+Route::post ( '/filter', function (Request $request) {
+   
+     
+    $aset_brand_id =Request::get ( 'aset_brand_id' );
+    $aset_model_id =Request::get ( 'aset_model_id' );
+    $receive_date =Request::get ( 'receive_date' );
+    $aset_stor_supplier_id =Request::get ( 'aset_stor_supplier_id' );
+    $aset_procurement_ty_id =Request::get ( 'aset_procurement_ty_id' );
+    $aset_status_id =Request::get ( 'aset_status_id' );
+    $brands = DB::table("aset_brands")->pluck("name", "id");
+    $models = AsetModel::all();
+    $suppliers = Supplier::all();
+    $proc_types = Procurement_type::all();
+    $asetStatus = AsetStatus::all();
+    $staffs = Staff::all();
+    
+    if(!empty(Request::get('receive_date')))
+      {
+        
+        $details = Printer::orderBy('created_at','DESC')
+        ->join('hr_staffs', 'hr_staffs.id', '=', 'aset_printers.hr_staff_id')
+        ->join('aset_models', 'aset_models.id', '=', 'aset_printers.aset_model_id')
+        ->join('hr_units', 'hr_units.id', '=', 'hr_staffs.hr_unit_id')
+        ->join('aset_brands', 'aset_brands.id', '=', 'aset_printers.aset_brand_id')
+        ->select('aset_printers.*','hr_staffs.name','aset_models.name as m_name','aset_brands.name as b_name','hr_units.name as u_name')
+        
+        ->where( 'aset_printers.aset_brand_id', 'LIKE', '%' . $aset_brand_id . '%' )
+        ->where( 'aset_printers.aset_model_id', 'LIKE', '%' . $aset_model_id . '%' )
+        ->whereYear( 'aset_printers.receive_date', 'LIKE', '%' . $receive_date . '%' )
+        ->where( 'aset_printers.aset_stor_supplier_id', 'LIKE', '%' . $aset_stor_supplier_id . '%' )
+        ->where( 'aset_printers.aset_procurement_ty_id', 'LIKE', '%' . $aset_procurement_ty_id . '%' )
+        ->where( 'aset_printers.aset_status_id', 'LIKE', '%' . $aset_status_id . '%' )
+        ->get();
+       
+    }
+    else
+    {
+        $details = Printer::orderBy('created_at','DESC')
+        ->join('hr_staffs', 'hr_staffs.id', '=', 'aset_printers.hr_staff_id')
+        ->join('aset_models', 'aset_models.id', '=', 'aset_printers.aset_model_id')
+        ->join('hr_units', 'hr_units.id', '=', 'hr_staffs.hr_unit_id')
+        ->join('aset_brands', 'aset_brands.id', '=', 'aset_printers.aset_brand_id')
+        ->select('aset_printers.*','hr_staffs.name','aset_models.name as m_name','aset_brands.name as b_name','hr_units.name as u_name')
+        
+        ->where( 'aset_printers.aset_brand_id', 'LIKE', '%' . $aset_brand_id . '%' )
+        ->where( 'aset_printers.aset_model_id', 'LIKE', '%' . $aset_model_id . '%' )
+        //->whereYear( 'receive_date', 'LIKE', '%' . $receive_date . '%' )
+        ->where( 'aset_printers.aset_stor_supplier_id', 'LIKE', '%' . $aset_stor_supplier_id . '%' )
+        ->where( 'aset_printers.aset_procurement_ty_id', 'LIKE', '%' . $aset_procurement_ty_id . '%' )
+        ->where( 'aset_printers.aset_status_id', 'LIKE', '%' . $aset_status_id . '%' )
+        
+        ->get();
+        
+      } 
+     // return Response($details);
+      //return datatables()->of($data)->make(true);
+     //  dd($details);
+    // return DataTables::of($details)->make(true);
+   // return datatables()->of($details)->make(true);
+       return view('admin.editorfilter', compact('details','brands','models','suppliers','proc_types','asetStatus','staffs'));
+      // return DataTables::of($details)
+        //    ->addColumn('edit', '<a class="edit" href="javascript:;">Edit</a>')
+       //     ->addColumn('delete', '<a class="delete" href="#" data-target="#deleteConfirmModal" data-toggle="modal">Delete</a>')
+       //     ->rawColumns(['edit','delete'])
+       //   ->make(true);
+} )->name('filter');
