@@ -1,6 +1,6 @@
 @extends('admin/layouts/default')
 @section('title')
-    Keterangan Pencetak
+    Kemaskini Penempatan Pencetak
     @parent
 @stop
 
@@ -9,7 +9,21 @@
 
     <link href="{{ asset('vendors/iCheck/css/all.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('css/pages/form_layouts.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('vendors/iCheck/css/all.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('css/pages/form_layouts.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('vendors/pickadate/css/default.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('vendors/pickadate/css/default.date.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('vendors/pickadate/css/default.time.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('vendors/airDatepicker/css/datepicker.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('vendors/flatpickr/css/flatpickr.min.css') }}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{{ asset('css/pages/adv_date_pickers.css') }}" rel="stylesheet" type="text/css"/>
 
+    <link type="text/css" href="{{ asset('vendors/bootstrap-multiselect/css/bootstrap-multiselect.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('vendors/select2/css/select2.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('vendors/select2/css/select2-bootstrap.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('vendors/selectize/css/selectize.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('vendors/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet"/>
 
 @stop
 @section('content')
@@ -17,7 +31,7 @@
     <section class="content-header">
 
         <!--section starts-->
-        <h1>Keterangan Aset Pencetak</h1>
+        <h1>Kemaskini Penempatan Aset Pencetak</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="{{ route('admin.dashboard') }}">
@@ -38,8 +52,10 @@
             <div class="col-lg-12">
                 <div class="card ">
                     <div class="card-body border">
-                        <form enctype="multipart/form-data" class="form-horizontal form-bordered">
-
+                        
+                        <form action="{{ route('aset:editPenempatan') }}" method="POST" enctype="multipart/form-data" class="form-horizontal form-bordered">
+                            @csrf
+                            {{ method_field('post') }}
 
                             @foreach($details as $data)
                             <div class="form-group">
@@ -105,27 +121,74 @@
                                         </div>
                                     </div>
                             </div>
+                           
                             <div class="form-group">
                                 <div class="row">
                                     <label class="col-md-3 control-label"
                                            for="form-text-input">Penempatan</label>
-                                    <div class="row-offcanvas-left">
-                                        {{ $data->Staffs->name }}
+                                             <div class="row-offcanvas-left">
+                                        <select id="select24" name="hr_staff_id">
+                                                <option value="{{ $data->Staffs->id }}" readonly>{{ $data->Staffs->name }}</option>
+                                                @foreach($staffs as $s)
+                                                    <option value="{{ $s->id }}">{{ $s->name }}</option>
+                                                @endforeach
+                                            </select>
                                     </div>
                                     <div class="row-offcanvas-left">
-                                        {{ $data->location }}
+                                    <input type="text" name="location" value="{{ $data->location }}"size="30">
                                     </div>
                                     <div class="row-offcanvas-left">
+                                    
                                         {{ $data->allocate_date }}
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" id="hr_staff_id_1" name="hr_staff_id_1" value="{{$data->hr_staff_id}}">
+                            <input type="hidden" id="location_1" name="location_1" value="{{$data->location}}">
+                            <input type="hidden" id="remarks_1" name="remarks_1" value="{{$data->remarks}}">
+                            <input type="hidden" id="hr_unit_id" name="hr_unit_id" value="{{$data->Staffs->hr_unit_id}}">
+                            <input type="hidden" id="id" name="id" value="{{$data->id }}">
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-md-3 control-label"
+                                           for="form-text-input">Status</label>
+                                    <div class="row-offcanvas-left">
+                                    <select name="aset_status_id" id="aset_status_id" class="form-control select2">
+                                            <option value="{{ $data->AsetStatus->id }}" readonly>{{ $data->AsetStatus->name }}</option>
+                                            @foreach($asetStatus as $b)
+                                                <option value="{{ $b->id }}">{{ $b->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        @if ($errors->has('aset_status_id'))
+                                            <span class="text-danger">{{ $errors->first('aset_status_id') }}</span>
+                                        @endif 
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="row">
                                     <label class="col-md-3 control-label"
-                                           for="form-text-input">Status</label>
-                                    <div class="row-offcanvas-left">
-                                        {{ $data->AsetStatus->name }}
+                                           for="form-text-input">Tarikh Penempatan </label>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <p class="flatpickr input-group" data-wrap="true" data-clickOpens="false">
+                                                <input class="form-control" name="allocate_date_end" value="{{ date('Y-m-d') }}" data-input id="elements">
+                                                <span class="input-group-append add-on">
+                                            <a class="input-btn" data-toggle>
+                                                <span class="input-group-text remove_radius"> <i class="livicon" data-name="calendar" data-size="23"
+                                                                                                 data-c="#555555" data-hc="#555555" data-loop="true"></i></span>
+                                            </a>
+                                        </span>
+                                                <span class="input-group-append add-on">
+                                            <a class="input-btn" data-clear>
+                                                 <span class="input-group-text"><i class="livicon" data-name="remove" data-size="23"
+                                                                                   data-c="#555555" data-hc="#555555" data-loop="true"></i></span>
+                                            </a>
+                                        </span>
+                                            </p>
+                                        </div>
+
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -134,70 +197,26 @@
                                     <label class="col-md-3 control-label"
                                            for="form-text-input">Catatan</label>
                                     <div class="row-offcanvas-left">
-                                        {{ $data->remarks }}
+                                    <div class="row-offcanvas-left">
+                                    <input type="text" id="remarks" name="remarks" value="{{$data->remarks }}" >
+                                    <!--<textarea name="remarks" value="{{ $data->remarks }}" rows="4" cols="50"></textarea> -->
+                                    </div>
+                                        
                                     </div>
                                 </div>
                             </div>
                             @endforeach
-                            <section class="content pl-3 pr-3">
 
-<div class="row">
-    <div class="col-lg-12 my-3">
-        <div class="card filterable" style="overflow:auto;">
-
-            <div class="card-header bg-primary text-white">
-                
-                <span>
-                             <i class="livicon" data-name="responsive" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                            Sejarah Penempatan Pencetak
-                        </span>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive-lg table-responsive-sm table-responsive-md">
-                    <table class="table table-striped table-bordered" id="table2"
-                           width="100%">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nama</th>
-                            <th>Unit</th>
-                            <th>Lokasi</th>
-                            <th>Tarikh</th>
-                            <th>Catatan</th>
                             
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @php $num=1; @endphp
-                        @foreach($asets as $data)
-                            <tr>
-                                <td>{{ $num }}</td>
-                                <td>{{ $data->Staffs->name }}</td>
-                                <td>{{ $data->Staffs->Units->name}}</td>
-                                <td>{{ $data->location }}</td>
-                                <td>{{ $data->allocate_date_end }}</td>
-                                <td>{{ $data->remarks }}</td>
-                                
-                            </tr>
-                            @php $num++; @endphp
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-</section>
-                            </form>
                         <div class="form-group form-actions">
                             <div class="row">
                                 <div class="col-md-9 col-md-offset-3 ml-auto">
-
+                                <button type="submit" class="btn btn-effect-ripple btn-primary">
+                                                Simpan
+                                            </button>
                                     <span class="btn btn-effect-ripple btn-light"><a href="{{ route('aset:aset') }}">Kembali</a> </span>
 
-                                </div>
+                         </form>       </div>
                             </div>
                         </div>
                 </div>

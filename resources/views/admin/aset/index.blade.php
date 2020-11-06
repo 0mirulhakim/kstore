@@ -28,11 +28,20 @@
 
 {{-- Page content --}}
 @section('content')
-
     <section class="content-header">
 
         <!--section starts-->
         <h1>Senarai Aset Pencetak</h1>
+        
+        @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif @if(session('success'))
+    <div class="alert alert-success">
+        {{session('success')}}
+    </div>
+@endif
         <ol class="breadcrumb">
             <li>
                 <a href="{{ route('admin.dashboard') }}">
@@ -74,26 +83,34 @@
                                     <th>Model</th>
                                     <th>No. Siri</th>
                                     <th>No. Daftar Aset</th>
+                                    <th>Nama</th>
+                                    <th>Unit</th>
                                     <th>Tarikh Terima</th>
+                                    <th>&nbsp;</th>
                                     <th>&nbsp;</th>
                                     <th>&nbsp;</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @php $num=1; @endphp
-                                @foreach($asets as $data)
+                                @foreach($details as $data)
                                     <tr>
                                         <td>{{ $num }}</td>
                                         <td>{{ $data->Brands->name }}</td>
                                         <td>{{ $data->Models->name }}</td>
                                         <td>{{ $data->serial_no }}</td>
                                         <td>{{ $data->registration_no }}</td>
+                                        <td>{{ $data->Staffs->name }}</td>
+                                        <td>{{ $data->Staffs->Units->name }}</td>
                                         <td>{{ $data->receive_date }}</td>
                                         <td>
                                             <a href="{{ route('aset:detailsPrinter',$data->id) }}" ><i class="livicon" data-name="list-ul" data-size="18" data-toggle="tooltip" data-original-title="Lihat Maklumat Terperinci" ></i></a>
                                         </td>
                                         <td>
-                                            <a href="#" ><i class="livicon" data-name="users" data-size="18" data-toggle="tooltip" data-original-title="Kemaskini Penempatan" ></i></a>
+                                            <a href="{{ route('aset:KemaskiniPenempatan',$data->id) }}" ><!--<input type="hidden" id="id" name="id" value="$data->id">--><i class="livicon" data-name="users" data-size="18" data-toggle="tooltip" data-original-title="Kemaskini Penempatan" ></i></a>
+                                        </td>
+                                        <td>
+                                        <a href="{{ route('aset:KemaskiniAset',$data->id) }}" ><i class="livicon" data-name="pencil" data-size="18" data-toggle="tooltip" data-original-title="Kemaskini Aset" ></i></a> 
                                         </td>
                                     </tr>
                                     @php $num++; @endphp

@@ -1,6 +1,6 @@
 @extends('admin/layouts/default')
 @section('title')
-    Daftar Aset Pencetak
+    Kemaskini Aset Pencetak
     @parent
 @stop
 
@@ -29,7 +29,7 @@
 
     <section class="content-header">
         <!--section starts-->
-        <h1>Daftar Pencetak</h1>
+        <h1>Kemaskini Aset Pencetak</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="{{ route('admin.dashboard') }}">
@@ -49,16 +49,18 @@
             <div class="col-lg-12">
                 <div class="card ">
                     <div class="card-body border">
-                        <form action="{{ route('aset:storePrinter') }}" method="POST" enctype="multipart/form-data" class="form-horizontal form-bordered">
+                        <form action="{{ route('aset:editAset') }}" method="POST" enctype="multipart/form-data" class="form-horizontal form-bordered">
                             @csrf
                             {{ method_field('post') }}
+                            @foreach($details as $data)
+                            <input type="hidden" id="id" name="id" value="{{$data->id }}">
                             <div class="form-group">
                                 <div class="row">
                                     <label class="col-md-3 control-label"
                                            for="form-text-input">Jenama</label>
                                     <div class="col-md-3">
                                         <select name="aset_brand_id" id="aset_brand_id" class="form-control input-lg dynamic" data-dependent="aset_model_id">
-                                            <option value="" readonly>Sila Pilih Jenama</option>
+                                            <option value="{{ $data->Brands->id }}" readonly>{{ $data->Brands->name }}</option>
                                             @foreach($brands as $key => $value)
                                                 <option value="{{ $key }}">{{ $value }}</option>
                                             @endforeach
@@ -78,30 +80,32 @@
                                     <label class="col-md-3 control-label"
                                            for="form-text-input">Model</label>
                                     <div class="col-md-3">
-                                        <select name="aset_model_id" id="aset_model_id" class="form-control select2">
-                                            <option value="" readonly>Sila Pilih Model</option>
-
-
+                                        <select name="aset_model_id" id="select25" class="form-control select2">
+                                            <option value="{{ $data->Models->id }}" readonly>{{ $data->Models->name }}</option>
+                                            
+                                            @foreach($models as $a)
+                                                <option value="{{ $a->id }}">{{ $a->name }}</option>
+                                            @endforeach
                                         </select>
                                         @if ($errors->has('aset_model_id'))
                                             <span class="text-danger">{{ $errors->first('aset_model_id') }}</span>
                                         @endif
 
                                     </div>
-
+                                    @endforeach
                                 </div>
                             </div>
 
 
-    <!-- Script -->
+    <!-- Script --><!--
     <script type='text/javascript'>
 
     $(document).ready(function(){
 
-      // Department Change
+      // Brand Change
       $('#aset_brand_id').change(function(){
 
-         // Department id
+         // Brand id
          var id = $(this).val();
 
          // Empty the dropdown
@@ -138,7 +142,7 @@
 
     });
 
-    </script>
+    </script>-->
                             <div class="form-group">
                                 <div class="row">
                                     <label class="col-md-3 control-label"
@@ -146,7 +150,7 @@
                                     <div class="col-md-3">
                                         <input type="text" id="form-text-input"
                                                name="serial_no"
-                                               class="form-control" placeholder="Masukkan No. Siri">
+                                               class="form-control" value="{{ $data->serial_no }}">
                                         @if ($errors->has('serial_no'))
                                             <span class="text-danger">{{ $errors->first('serial_no') }}</span>
                                         @endif
@@ -161,7 +165,7 @@
                                     <div class="col-md-5">
                                         <input type="text" id="registration_no"
                                                name="registration_no"
-                                               class="form-control" placeholder="Masukkan No. Daftar Aset">
+                                               class="form-control" value="{{ $data->registration_no }}">
                                         @if ($errors->has('registration_no'))
                                             <span class="text-danger">{{ $errors->first('registration_no') }}</span>
                                         @endif
@@ -177,7 +181,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <p class="flatpickr input-group" data-wrap="true" data-clickOpens="false">
-                                                <input class="form-control" name="receive_date" placeholder="Pilih Tarikh" data-input id="elements">
+                                                <input class="form-control" name="receive_date" value=" {{ $data->receive_date }}" data-input id="elements">
                                                 <span class="input-group-append add-on">
                                             <a class="input-btn" data-toggle>
                                                 <span class="input-group-text remove_radius"> <i class="livicon" data-name="calendar" data-size="23"
@@ -206,7 +210,7 @@
                                            for="form-text-input">Pembekal</label>
                                     <div class="col-md-3">
                                         <select name="aset_stor_supplier_id" id="aset_stor_supplier_id" class="form-control select2">
-                                            <option value="" readonly>Sila Pilih Pembekal</option>
+                                            <option value=" {{ $data->Suppliers->id }}" readonly> {{ $data->Suppliers->name }}</option>
                                             @foreach($suppliers as $a)
                                                 <option value="{{ $a->id }}">{{ $a->name }}</option>
                                             @endforeach
@@ -224,7 +228,7 @@
                                            for="form-text-input">Jenis Perolehan</label>
                                     <div class="col-md-3">
                                         <select name="aset_procurement_ty_id" id="aset_procurement_ty_id" class="form-control select2">
-                                            <option value="" readonly>Sila Pilih Jenis Perolehan</option>
+                                            <option value="{{ $data->Procurement_types->id }}" readonly>{{ $data->Procurement_types->name }}</option>
                                             @foreach($proc_types as $a)
                                                 <option value="{{ $a->id }}">{{ $a->name }}</option>
                                             @endforeach
@@ -242,7 +246,7 @@
                                            for="form-text-input">Status Pencetak</label>
                                     <div class="col-md-3">
                                         <select name="aset_status_id" id="aset_status_id" class="form-control select2">
-                                            <option value="" readonly>Status Pencetak</option>
+                                            <option value="{{ $data->AsetStatus->id }}" readonly>{{ $data->AsetStatus->name }}</option>
                                             @foreach($asetStatus as $b)
                                                 <option value="{{ $b->id }}">{{ $b->name }}</option>
                                             @endforeach
@@ -264,8 +268,8 @@
                                     <div class="input-group-append radius_left">
 
                                         <div class="input-group-append radius_left">
-                                            <select id="select24" name="hr_staff_id" required>
-                                                <option value="" readonly>Pegawai / Kakitangan</option>
+                                            <select id="select24" name="hr_staff_id">
+                                                <option value="{{ $data->Staffs->id }}" readonly>{{ $data->Staffs->name }}</option>
                                                 @foreach($staffs as $s)
                                                     <option value="{{ $s->id }}">{{ $s->name }}</option>
                                                 @endforeach
@@ -279,7 +283,7 @@
                                     <div class="col-md-5">
                                         <input type="text" id="location"
                                                name="location"
-                                               class="form-control" placeholder="Masukkan Lokasi Penempatan">
+                                               class="form-control" value="{{ $data->location }}">
                                         @if ($errors->has('location'))
                                             <span class="text-danger">{{ $errors->first('location') }}</span>
                                         @endif
@@ -294,7 +298,7 @@
                                     <div class="col-md-4">
                                         <div class="input-group">
                                             <p class="flatpickr input-group" data-wrap="true" data-clickOpens="false">
-                                                <input class="form-control" name="allocate_date" placeholder="Pick date" data-input id="elements">
+                                                <input class="form-control" name="allocate_date" value=" {{ $data->allocate_date }}" data-input id="elements">
                                                 <span class="input-group-append add-on">
                                             <a class="input-btn" data-toggle>
                                                 <span class="input-group-text remove_radius"> <i class="livicon" data-name="calendar" data-size="23"
@@ -322,7 +326,7 @@
                                            <div class="col-md-5">
                                         <input type="text" id="remarks"
                                                name="remarks"
-                                               class="form-control" placeholder="Masukkan Catatan">
+                                               class="form-control" value="{{ $data->remarks }}">
                                         @if ($errors->has('remarks'))
                                             <span class="text-danger">{{ $errors->first('remarks') }}</span>
                                         @endif
@@ -392,7 +396,7 @@
 
     <link rel="stylesheet" href="http://demo.itsolutionstuff.com/plugin/bootstrap-3.min.css">
 
-   <!-- <script type="text/javascript">
+    <script type="text/javascript">
 
         $(document).ready(function() {
 
@@ -404,7 +408,7 @@
 
                     $.ajax({
 
-                        url: 'http://k-store.pdtk/admin/registerPrinter/ajax/'+brandID,
+                        url: 'http://localhost/k-store/public/admin/registerPrinter/ajax/'+brandID,
 
                         type: "GET",
 
@@ -438,7 +442,7 @@
 
         });
 
-    </script>-->
+    </script>
 
 @stop
 
